@@ -86,7 +86,7 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
+          borderRadius: 24, // Rounded like Google buttons
           padding: '10px 24px',
           fontSize: '1rem',
           fontWeight: 500,
