@@ -1,0 +1,121 @@
+'use client';
+
+import { Container, Typography, IconButton, Box } from '@mui/material';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import EmailIcon from '@mui/icons-material/Email';
+import Image from 'next/image';
+
+export function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <Box
+      component="footer"
+      sx={{
+        backgroundColor: '#f8f9fa',
+        borderTop: '1px solid rgba(0, 0, 0, 0.08)',
+        py: 6,
+        mt: 8,
+      }}
+    >
+      <Container maxWidth="xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+          {/* Logo and About */}
+          <div>
+            <Image
+              src="/images/logo.png"
+              alt="GTEC Logo"
+              width={120}
+              height={40}
+              className="object-contain mb-4"
+            />
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Partner oficial de Google con más de 5 años de reconocimiento como Great Place to Work.
+            </Typography>
+          </div>
+
+          {/* Soluciones */}
+          <div>
+            <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+              Soluciones
+            </Typography>
+            <ul className="space-y-2">
+              <li>
+                <Typography variant="body2" color="text.secondary">
+                  Modernización Digital
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body2" color="text.secondary">
+                  Google Workspace
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body2" color="text.secondary">
+                  IA Generativa
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body2" color="text.secondary">
+                  Analítica de Datos
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body2" color="text.secondary">
+                  Servicios Administrados
+                </Typography>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contacto */}
+          <div>
+            <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+              Contacto
+            </Typography>
+            <div className="flex gap-2 mb-4">
+              <IconButton 
+                size="small" 
+                sx={{ 
+                  color: 'primary.main',
+                  '&:hover': { backgroundColor: 'rgba(43, 79, 124, 0.08)' }
+                }}
+              >
+                <LinkedInIcon />
+              </IconButton>
+              <IconButton 
+                size="small"
+                sx={{ 
+                  color: 'secondary.main',
+                  '&:hover': { backgroundColor: 'rgba(43, 194, 254, 0.08)' }
+                }}
+              >
+                <TwitterIcon />
+              </IconButton>
+              <IconButton 
+                size="small"
+                sx={{ 
+                  color: 'error.main',
+                  '&:hover': { backgroundColor: 'rgba(228, 0, 92, 0.08)' }
+                }}
+              >
+                <EmailIcon />
+              </IconButton>
+            </div>
+            <Typography variant="body2" color="text.secondary">
+              info@gtec.com
+            </Typography>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="pt-6 border-t border-gray-200">
+          <Typography variant="body2" color="text.secondary" textAlign="center">
+            © {currentYear} GTEC. Todos los derechos reservados.
+          </Typography>
+        </div>
+      </Container>
+    </Box>
+  );
+}

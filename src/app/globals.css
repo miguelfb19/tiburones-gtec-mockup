@@ -3,6 +3,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* GTEC Brand Colors */
+  --primary: #2B4F7C;
+  --secondary: #2bc2fe;
+  --tertiary: #e4005c;
+  
+  /* Shades */
+  --primary-light: #3d6ba3;
+  --primary-dark: #1e3556;
+  --secondary-light: #5dd3ff;
+  --secondary-dark: #1ba5d9;
+  --tertiary-light: #ff3380;
+  --tertiary-dark: #b30047;
 }
 
 @theme inline {
@@ -10,6 +23,17 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Brand colors for Tailwind */
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-light: var(--tertiary-light);
+  --color-tertiary-dark: var(--tertiary-dark);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +43,21 @@
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
 }
