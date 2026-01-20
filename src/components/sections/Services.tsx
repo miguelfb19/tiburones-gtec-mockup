@@ -1,6 +1,7 @@
 'use client';
 
 import { Container, Typography, Box } from '@mui/material';
+import { GradientTitle } from '@/components/ui/GradientTitle';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { FadeIn } from '@/components/animations/FadeIn';
 import CloudIcon from '@mui/icons-material/Cloud';
@@ -66,16 +67,15 @@ export function Services() {
           >
             Nuestras Soluciones
           </Typography>
-          <Typography
-            variant="h2"
+          <GradientTitle
+            as="h2"
             sx={{
               mb: 3,
-              fontWeight: 700,
-              color: 'primary.main',
+              textAlign: "center",
             }}
           >
             Servicios especializados para tu empresa
-          </Typography>
+          </GradientTitle>
           <Typography
             variant="h6"
             sx={{

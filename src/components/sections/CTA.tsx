@@ -10,7 +10,6 @@ export function CTA() {
       component="section"
       sx={{
         py: { xs: 8, md: 12 },
-        background: 'linear-gradient(135deg, #2B4F7C 0%, #1e3556 100%)',
         position: 'relative',
         overflow: 'hidden',
       }}

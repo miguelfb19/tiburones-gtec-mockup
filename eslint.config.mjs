@@ -13,6 +13,11 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      "sonarjs/suggest-canonical-classnames": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

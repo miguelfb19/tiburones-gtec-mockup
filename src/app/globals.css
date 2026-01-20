@@ -8,6 +8,7 @@
   --primary: #2B4F7C;
   --secondary: #2bc2fe;
   --tertiary: #e4005c;
+  --quaternary: #e9e9e9;
   
   /* Shades */
   --primary-light: #3d6ba3;
@@ -34,6 +35,7 @@
   --color-tertiary: var(--tertiary);
   --color-tertiary-light: var(--tertiary-light);
   --color-tertiary-dark: var(--tertiary-dark);
+  --color-quaternary: var(--quaternary);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,7 +52,7 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--quaternary);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
