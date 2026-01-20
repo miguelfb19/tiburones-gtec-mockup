@@ -31,7 +31,7 @@ export function Button({
 
   // Base classes
   const baseClasses =
-    "relative inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
+    "relative inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer hover:shadow";
 
   // Variant classes
   const variantClasses = {
@@ -40,7 +40,7 @@ export function Button({
     ghost:
       "bg-transparent text-primary hover:bg-primary/5 hover:scale-105 hover:shadowactive:bg-primary/10 active:scale-95",
     outline:
-      "border-2 bg-transparent color-primary border-primary text-primary hover:bg-primary/5 hover:scale-105 hover:shadow active:bg-primary/10 active:scale-95",
+      "border-2 bg-transparent color-primary border-primary text-primary hover:bg-secondary/10 hover:scale-105 hover:shadow active:bg-primary/10 active:scale-95",
   };
 
   return (

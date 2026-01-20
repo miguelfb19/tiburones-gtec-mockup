@@ -10,17 +10,13 @@ import { Button } from "@/components/ui/Button";
 
 export function Hero() {
   return (
-    <div className="relative overflow-hidden pt-16 pb-16 md:pt-24 md:pb-32">
+    <div className="relative overflow-hidden pb-10">
       <BubbleAnimation />
-      <div
-        className="absolute rounded-full pointer-events-none w-[40%] h-[60%] -top-[10%] -right-[5%] bg-[radial-gradient(circle, rgba(43, 194, 254, 0.1) 0%, transparent 70%)]"
-      />
-      <div
-        className="absolute rounded-full pointer-events-none w-[35%] h-[50%] -bottom-[5%] -left-[5%] bg-[radial-gradient(circle, rgba(43, 79, 124, 0.08) 0%, transparent 70%)]"
-      />
+      <div className="absolute rounded-full pointer-events-none w-[40%] h-[60%] -top-[10%] -right-[5%] bg-[radial-gradient(circle, rgba(43, 194, 254, 0.1) 0%, transparent 70%)]" />
+      <div className="absolute rounded-full pointer-events-none w-[35%] h-[50%] -bottom-[5%] -left-[5%] bg-[radial-gradient(circle, rgba(43, 79, 124, 0.08) 0%, transparent 70%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex flex-col items-center gap-12 w-full">
+        <div className="relative flex flex-col items-center w-full">
           <motion.div
             className="absolute inset-0 pointer-events-none flex justify-center z-0"
             initial={{ opacity: 0.6 }}
@@ -87,7 +83,6 @@ export function Hero() {
                   }}
                 />
               </motion.div>
-
             </div>
           </motion.div>
 
@@ -96,23 +91,21 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
-            className="w-full text-center "
+            className="w-full text-center flex flex-col items-center gap-5 md:gap-10"
           >
-            <div className="mb-12">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <Typography
+                variant="overline"
+                className="font-semibold text-base tracking-widest"
+                sx={{ color: "secondary.main" }}
               >
-                <Typography
-                  variant="overline"
-                  className="font-semibold text-base tracking-widest"
-                  sx={{ color: "secondary.main" }}
-                >
-                  Google Cloud Partner
-                </Typography>
-              </motion.div>
-            </div>
+                Google Cloud Partner
+              </Typography>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -156,7 +149,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-wrap justify-center gap-6 mb-8"
+              className="flex flex-wrap justify-center gap-6"
             >
               <Button
                 variant="solid"
@@ -165,20 +158,17 @@ export function Hero() {
               >
                 Conoce nuestras soluciones
               </Button>
-              <Button
-                variant="outline"
-                size="large"
-              >
+              <Button variant="outline" size="large">
                 Contacto
               </Button>
             </motion.div>
 
-            {/* Badges */}
+            {/* BADGES */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="mt-12 flex flex-wrap justify-center gap-8 items-center"
+              className="flex flex-wrap justify-center gap-8 items-center"
             >
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">
@@ -189,6 +179,7 @@ export function Hero() {
                     variant="caption"
                     display="block"
                     className="font-semibold"
+                    color="text.primary"
                   >
                     Google Partner
                   </Typography>
@@ -206,6 +197,7 @@ export function Hero() {
                     variant="caption"
                     display="block"
                     className="font-semibold"
+                    color="text.primary"
                   >
                     Great Place to Work
                   </Typography>

@@ -34,7 +34,7 @@ export const BubbleAnimation = (): JSX.Element => {
       {points.map((p, index) => (
         <span
           key={p.id}
-          className="pointer-events-none absolute rounded-full animate-bubble"
+          className="fixed pointer-events-none rounded-full animate-bubble"
           style={{
             left: p.x,
             top: p.y,
@@ -49,27 +49,6 @@ export const BubbleAnimation = (): JSX.Element => {
           }}
         />
       ))}
-
-      {/* Tailwind custom animation */}
-      <style jsx global>{`
-        @keyframes bubble {
-          0% {
-            opacity: 0.95;
-            transform: translate(-50%, -50%) scale(0.8);
-          }
-          60% {
-            opacity: 0.85;
-            transform: translate(-50%, calc(-50% - 15px)) scale(1.05);
-          }
-          100% {
-            opacity: 0;
-            transform: translate(-50%, calc(-50% - 40px)) scale(1.25);
-          }
-        }
-        .animate-bubble {
-          animation: bubble 0.9s ease-out forwards;
-        }
-      `}</style>
     </>
   );
 }

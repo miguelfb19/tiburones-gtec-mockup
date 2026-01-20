@@ -3,13 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  
+
   /* GTEC Brand Colors */
-  --primary: #2B4F7C;
+  --primary: #2b4f7c;
   --secondary: #2bc2fe;
   --tertiary: #e4005c;
   --quaternary: #e9e9e9;
-  
+
   /* Shades */
   --primary-light: #3d6ba3;
   --primary-dark: #1e3556;
@@ -24,7 +24,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  
+
   /* Brand colors for Tailwind */
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);
@@ -48,7 +48,11 @@
 body {
   background: var(--quaternary);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-family:
+    var(--font-sans),
+    system-ui,
+    -apple-system,
+    sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -56,4 +60,22 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes bubble {
+  0% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  60% {
+    opacity: 0.85;
+    transform: translate(-50%, calc(-50% - 15px)) scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 40px)) scale(1.25);
+  }
+}
+.animate-bubble {
+  animation: bubble 0.9s ease-out forwards;
 }

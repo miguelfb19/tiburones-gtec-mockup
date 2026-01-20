@@ -45,9 +45,9 @@ const services = [
 
 export function Services() {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="bg-white py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn direction="up" className="text-center mb-12">
+        <FadeIn direction="up" className="text-center mb-12 flex flex-col items-center gap-5">
           <Typography
             variant="overline"
             className="font-semibold text-base tracking-widest mb-4 block"
