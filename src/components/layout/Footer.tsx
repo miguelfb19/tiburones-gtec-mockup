@@ -29,7 +29,7 @@ export function Footer() {
 
           {/* Soluciones */}
           <div>
-            <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+            <Typography variant="h6" className='!mb-4 font-semibold' color='text.primary'>
               Soluciones
             </Typography>
             <ul className="space-y-2">
@@ -63,7 +63,7 @@ export function Footer() {
 
           {/* Contacto */}
           <div>
-            <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+            <Typography variant="h6" className='!mb-4 font-semibold' color='text.primary'>
               Contacto
             </Typography>
             <div className="flex gap-2 mb-4">

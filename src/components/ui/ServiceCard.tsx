@@ -12,7 +12,7 @@ interface ServiceCardProps {
   delay?: number;
 }
 
-export function ServiceCard({ title, description, icon, color, delay = 0 }: ServiceCardProps) {
+export function ServiceCard({ title, description, icon, color, delay = 0 }: Readonly<ServiceCardProps>) {
   const colorMap = {
     primary: {
       bg: 'rgba(43, 79, 124, 0.05)',
