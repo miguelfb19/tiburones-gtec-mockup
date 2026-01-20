@@ -2,8 +2,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { AppBar, Toolbar, Container, Button } from '@mui/material';
+import { AppBar, Toolbar, Container } from '@mui/material';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/Button';
 
 export function Header() {
   return (
@@ -36,37 +37,21 @@ export function Header() {
 
           <nav className="hidden md:flex items-center gap-2">
             <Button 
-              color="primary"
-              sx={{ 
-                fontWeight: 500,
-                px: 2.5,
-                '&:hover': {
-                  backgroundColor: 'rgba(43, 79, 124, 0.08)',
-                }
-              }}
+              variant="ghost"
+              size="medium"
             >
               Soluciones
             </Button>
             <Button 
-              color="primary"
-              sx={{ 
-                fontWeight: 500,
-                px: 2.5,
-                '&:hover': {
-                  backgroundColor: 'rgba(43, 79, 124, 0.08)',
-                }
-              }}
+              variant="ghost"
+              size="medium"
             >
               Nosotros
             </Button>
             <Button 
-
-              variant="contained"
-              color="primary"
-              sx={{ 
-                ml: 2,
-                px: 3,
-              }}
+              variant="solid"
+              size="medium"
+              className="ml-4"
             >
               Contacto
             </Button>

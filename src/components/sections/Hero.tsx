@@ -1,85 +1,50 @@
 "use client";
 
-import { useRef } from "react";
-import { Container, Typography, Button, Box } from "@mui/material";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { Typography } from "@mui/material";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { GradientTitle } from "@/components/ui/GradientTitle";
+import { BubbleAnimation } from "@/components/ui/BubbleAnimation";
+import { Button } from "@/components/ui/Button";
 
 export function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
-  
-  // Parallax effects for cubes
-  const y1 = useTransform(scrollY, [0, 500], [0, 100]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -80]);
-  const y3 = useTransform(scrollY, [0, 500], [0, 150]);
-  
-  const rotate1 = useTransform(scrollY, [0, 500], [0, 45]);
-  const rotate2 = useTransform(scrollY, [0, 500], [0, -30]);
-  const rotate3 = useTransform(scrollY, [0, 500], [0, 60]);
-
   return (
-    <Box
-      ref={containerRef}
-      sx={{
-        background: "transparent",
-        pt: { xs: 8, md: 12 },
-        pb: { xs: 8, md: 16 },
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Decorative elements */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: "-10%",
-          right: "-5%",
-          width: "40%",
-          height: "60%",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(43, 194, 254, 0.1) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
+    <div className="relative overflow-hidden pt-16 pb-16 md:pt-24 md:pb-32">
+      <BubbleAnimation />
+      <div
+        className="absolute rounded-full pointer-events-none w-[40%] h-[60%] -top-[10%] -right-[5%] bg-[radial-gradient(circle, rgba(43, 194, 254, 0.1) 0%, transparent 70%)]"
       />
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: "-5%",
-          left: "-5%",
-          width: "35%",
-          height: "50%",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(43, 79, 124, 0.08) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
+      <div
+        className="absolute rounded-full pointer-events-none w-[35%] h-[50%] -bottom-[5%] -left-[5%] bg-[radial-gradient(circle, rgba(43, 79, 124, 0.08) 0%, transparent 70%)]"
       />
 
-      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1 }}>
-        <div className="flex flex-col items-center gap-12">
-          {/* Animation section with logo - now on top */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative flex flex-col items-center gap-12 w-full">
+          <motion.div
+            className="absolute inset-0 pointer-events-none flex justify-center z-0"
+            initial={{ opacity: 0.6 }}
+            animate={{ opacity: [0.6, 0.85, 0.6] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div
+              className="w-full h-full"
+              style={{
+                background:
+                  "radial-gradient(ellipse 500px 500px at center top, transparent 0%, transparent 20%, rgba(43,194,254,0.3) 45%, rgba(43,194,254,0.4) 70%, rgba(43,194,254,0.2) 100%)",
+                filter: "blur(60px)",
+              }}
+            />
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex justify-center items-center w-full"
           >
-            <Box
-              sx={{
-                position: "relative",
-                width: "100%",
-                maxWidth: 500,
-                aspectRatio: "1/1",
-              }}
-            >
+            <div className="relative w-full max-w-125 aspect-square">
               <motion.div
-                animate={{
-                  y: [0, -20, 0],
-                }}
+                animate={{ y: [0, -20, 0] }}
                 transition={{
                   duration: 4,
                   repeat: Infinity,
@@ -87,56 +52,43 @@ export function Hero() {
                 }}
                 className="absolute inset-0 flex items-center justify-center"
               >
+                {/* Glow overlay behind the logo */}
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  initial={{ opacity: 0.6, scale: 0.98 }}
+                  animate={{
+                    opacity: [0.6, 0.85, 0.6],
+                    scale: [0.98, 1.03, 0.98],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <div
+                    className="w-full h-full rounded-2xl"
+                    style={{
+                      background:
+                        "radial-gradient(circle at center, rgba(43,194,254,0.35) 0%, rgba(43,194,254,0.18) 40%, transparent 75%)",
+                      filter: "blur(40px)",
+                    }}
+                  />
+                </motion.div>
                 <Image
                   src="/images/logo.png"
                   alt="GTEC"
                   width={400}
                   height={150}
-                  className="object-contain opacity-20"
+                  className="object-contain opacity-90 relative"
+                  style={{
+                    filter:
+                      "drop-shadow(0 0 12px rgba(43,194,254,0.45)) drop-shadow(0 0 24px rgba(43,194,254,0.25))",
+                  }}
                 />
               </motion.div>
 
-              {/* Floating cards that follow scroll */}
-              {[
-                { color: "#2B4F7C", baseX: -80, baseY: -60, y: y1, rotate: rotate1 },
-                { color: "#2bc2fe", baseX: 80, baseY: -40, y: y2, rotate: rotate2 },
-                { color: "#e4005c", baseX: -60, baseY: 80, y: y3, rotate: rotate3 },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  style={{
-                    position: "absolute",
-                    left: "50%",
-                    top: "50%",
-                    x: item.baseX,
-                    y: item.baseY, // Initial position
-                  }}
-                >
-                  <motion.div
-                    style={{
-                      y: item.y, // Scroll-bound movement
-                      rotate: item.rotate,
-                    }}
-                  >
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: 0.4 + i * 0.2 }}
-                    >
-                      <div
-                        style={{
-                          width: 80,
-                          height: 80,
-                          borderRadius: 16,
-                          backgroundColor: item.color,
-                          boxShadow: `0 8px 24px ${item.color}40`,
-                        }}
-                      />
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </Box>
+            </div>
           </motion.div>
 
           {/* Content section - now below */}
@@ -144,9 +96,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
-            className="w-full text-center"
+            className="w-full text-center "
           >
-            <Box sx={{ mb: 3 }}>
+            <div className="mb-12">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -154,17 +106,13 @@ export function Hero() {
               >
                 <Typography
                   variant="overline"
-                  sx={{
-                    color: "secondary.main",
-                    fontWeight: 600,
-                    fontSize: "1rem",
-                    letterSpacing: "0.1em",
-                  }}
+                  className="font-semibold text-base tracking-widest"
+                  sx={{ color: "secondary.main" }}
                 >
                   Google Cloud Partner
                 </Typography>
               </motion.div>
-            </Box>
+            </div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -173,10 +121,14 @@ export function Hero() {
             >
               <GradientTitle
                 as="h1"
+                className="mb-8 leading-tight px-4"
                 sx={{
-                  mb: 3,
-                  fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
-                  lineHeight: 1.1,
+                  fontSize: {
+                    xs: "2rem",
+                    sm: "2.5rem",
+                    md: "3.5rem",
+                    lg: "4rem",
+                  },
                 }}
               >
                 Transformamos tu negocio con tecnología Google
@@ -190,11 +142,9 @@ export function Hero() {
             >
               <Typography
                 variant="h5"
+                className="mb-12 font-normal leading-relaxed px-4"
                 sx={{
-                  mb: 4,
                   color: "text.secondary",
-                  fontWeight: 400,
-                  lineHeight: 1.6,
                 }}
               >
                 Soluciones empresariales de vanguardia para impulsar tu
@@ -206,22 +156,18 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-wrap justify-center gap-4"
+              className="flex flex-wrap justify-center gap-6 mb-8"
             >
               <Button
-                variant="contained"
-                color="primary"
+                variant="solid"
                 size="large"
                 endIcon={<ArrowForwardIcon />}
-                sx={{ px: 4, py: 1.5 }}
               >
                 Conoce nuestras soluciones
               </Button>
               <Button
-                variant="outlined"
-                color="primary"
+                variant="outline"
                 size="large"
-                sx={{ px: 4, py: 1.5 }}
               >
                 Contacto
               </Button>
@@ -232,17 +178,17 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="!my-8 flex flex-wrap justify-center gap-6 items-center"
+              className="mt-12 flex flex-wrap justify-center gap-8 items-center"
             >
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">
+                <div className="w-12 h-12 rounded-full bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">
                   G
                 </div>
                 <div>
                   <Typography
                     variant="caption"
                     display="block"
-                    sx={{ fontWeight: 600 }}
+                    className="font-semibold"
                   >
                     Google Partner
                   </Typography>
@@ -252,14 +198,14 @@ export function Hero() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-tertiary to-tertiary-light flex items-center justify-center text-white font-bold text-sm">
+                <div className="w-12 h-12 rounded-full bg-linear-to-br from-tertiary to-tertiary-light flex items-center justify-center text-white font-bold text-sm">
                   5+
                 </div>
                 <div>
                   <Typography
                     variant="caption"
                     display="block"
-                    sx={{ fontWeight: 600 }}
+                    className="font-semibold"
                   >
                     Great Place to Work
                   </Typography>
@@ -271,7 +217,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
         </div>
-      </Container>
-    </Box>
+      </div>
+    </div>
   );
 }

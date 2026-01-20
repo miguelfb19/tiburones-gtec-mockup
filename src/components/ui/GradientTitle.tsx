@@ -15,6 +15,7 @@ export function GradientTitle({
   return (
     <Typography
       variant={as}
+      className="font-bold"
       sx={{
         background: "linear-gradient(135deg, #2B4F7C 0%, #2bc2fe 100%)",
         WebkitBackgroundClip: "text",
@@ -22,7 +23,6 @@ export function GradientTitle({
         backgroundClip: "text",
         textShadow: "0 4px 12px rgba(43, 79, 124, 0.2)",
         filter: "drop-shadow(0 2px 4px rgba(43, 194, 254, 0.15))",
-        fontWeight: 700,
         ...sx,
       }}
       {...props}

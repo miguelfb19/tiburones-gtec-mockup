@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 
@@ -52,29 +52,19 @@ export function ServiceCard({ title, description, icon, color, delay = 0 }: Serv
           },
         }}
       >
-        <CardContent sx={{ p: 4 }}>
-          <Box
-            sx={{
-              width: 64,
-              height: 64,
-              borderRadius: 2,
-              backgroundColor: selectedColor.iconBg,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              mb: 3,
-              color: 'white',
-            }}
+        <CardContent className="p-8">
+          <div
+            className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 text-white"
+            style={{ backgroundColor: selectedColor.iconBg }}
           >
             {icon}
-          </Box>
+          </div>
           
           <Typography 
             variant="h5" 
             component="h3" 
+            className="mb-4 font-semibold"
             sx={{ 
-              mb: 2,
-              fontWeight: 600,
               color: selectedColor.iconBg,
             }}
           >
@@ -84,7 +74,7 @@ export function ServiceCard({ title, description, icon, color, delay = 0 }: Serv
           <Typography 
             variant="body1" 
             color="text.secondary"
-            sx={{ lineHeight: 1.7 }}
+            className="leading-relaxed"
           >
             {description}
           </Typography>

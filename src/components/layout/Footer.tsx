@@ -1,6 +1,6 @@
 'use client';
 
-import { Container, Typography, IconButton, Box } from '@mui/material';
+import { Typography, IconButton } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import EmailIcon from '@mui/icons-material/Email';
@@ -10,16 +10,8 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <Box
-      component="footer"
-      sx={{
-        backgroundColor: '#f8f9fa',
-        borderTop: '1px solid rgba(0, 0, 0, 0.08)',
-        py: 6,
-        mt: 8,
-      }}
-    >
-      <Container maxWidth="xl">
+    <footer className="bg-gray-50 border-t border-gray-200 mt-16 p-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
           {/* Logo and About */}
           <div>
@@ -30,7 +22,7 @@ export function Footer() {
               height={40}
               className="object-contain mb-4"
             />
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+            <Typography variant="body2" color="text.secondary" className="mb-4">
               Partner oficial de Google con más de 5 años de reconocimiento como Great Place to Work.
             </Typography>
           </div>
@@ -115,7 +107,7 @@ export function Footer() {
             © {currentYear} GTEC. Todos los derechos reservados.
           </Typography>
         </div>
-      </Container>
-    </Box>
+      </div>
+    </footer>
   );
 }
