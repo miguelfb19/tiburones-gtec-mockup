@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Typography, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 
@@ -13,6 +13,9 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ title, description, icon, color, delay = 0 }: Readonly<ServiceCardProps>) {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
+
   const colorMap = {
     primary: {
       bg: 'rgba(43, 79, 124, 0.05)',
@@ -51,6 +54,7 @@ export function ServiceCard({ title, description, icon, color, delay = 0 }: Read
             boxShadow: `0 12px 32px ${selectedColor.border}20`,
           },
         }}
+        className={`${isDark ? 'hover:bg-linear-to-br! from-[#1a1a1a] to-stone-700' : `hover:bg-linear-to-bl! from-${color} via-50% via-white to-white`}`}
       >
         <CardContent className="p-8">
           <div

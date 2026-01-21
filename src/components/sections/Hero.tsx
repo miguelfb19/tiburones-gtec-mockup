@@ -1,215 +1,225 @@
 "use client";
 
-import { Typography } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { GradientTitle } from "@/components/ui/GradientTitle";
-import { BubbleAnimation } from "@/components/ui/BubbleAnimation";
 import { Button } from "@/components/ui/Button";
+import { Stars } from "../animations/Stars";
 
 export function Hero() {
-  return (
-    <div className="relative overflow-hidden pb-10">
-      <BubbleAnimation />
-      <div className="absolute rounded-full pointer-events-none w-[40%] h-[60%] -top-[10%] -right-[5%] bg-[radial-gradient(circle, rgba(43, 194, 254, 0.1) 0%, transparent 70%)]" />
-      <div className="absolute rounded-full pointer-events-none w-[35%] h-[50%] -bottom-[5%] -left-[5%] bg-[radial-gradient(circle, rgba(43, 79, 124, 0.08) 0%, transparent 70%)]" />
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex flex-col items-center w-full">
-          <motion.div
-            className="absolute inset-0 pointer-events-none flex justify-center z-0"
-            initial={{ opacity: 0.6 }}
-            animate={{ opacity: [0.6, 0.85, 0.6] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div
-              className="w-full h-full"
-              style={{
-                background:
-                  "radial-gradient(ellipse 500px 500px at center top, transparent 0%, transparent 20%, rgba(43,194,254,0.3) 45%, rgba(43,194,254,0.4) 70%, rgba(43,194,254,0.2) 100%)",
-                filter: "blur(60px)",
-              }}
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center items-center w-full"
-          >
-            <div className="relative w-full max-w-125 aspect-square">
-              <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 flex items-center justify-center"
-              >
-                {/* Glow overlay behind the logo */}
+  // Generar estrellas aleatorias
+
+  return (
+    <>
+      <div
+        className={`relative overflow-hidden pb-10 ${isDark ? "bg-[#0a0a0a]" : "bg-linear-to-b from-white to-secondary-light"}`}
+      >
+        {/* Estrellas animadas solo en modo oscuro */}
+        {isDark && <Stars />}
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative flex flex-col items-center w-full">
+            <motion.div
+              className="absolute inset-0 pointer-events-none flex justify-center z-0"
+              initial={{ opacity: 0.6 }}
+              animate={{ opacity: [0.6, 0.85, 0.6] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            ></motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center items-center w-full"
+            >
+              <div className="relative w-full max-w-125 aspect-square">
                 <motion.div
-                  className="absolute inset-0 pointer-events-none"
-                  initial={{ opacity: 0.6, scale: 0.98 }}
-                  animate={{
-                    opacity: [0.6, 0.85, 0.6],
-                    scale: [0.98, 1.03, 0.98],
-                  }}
+                  animate={{ y: [0, -20, 0] }}
                   transition={{
-                    duration: 3,
+                    duration: 4,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
+                  className="absolute inset-0 flex items-center justify-center"
                 >
-                  <div
-                    className="w-full h-full rounded-2xl"
-                    style={{
-                      background:
-                        "radial-gradient(circle at center, rgba(43,194,254,0.35) 0%, rgba(43,194,254,0.18) 40%, transparent 75%)",
-                      filter: "blur(40px)",
+                  {/* Glow overlay behind the logo */}
+                  <motion.div
+                    className="absolute inset-0 pointer-events-none"
+                    initial={{ opacity: 0.6, scale: 0.98 }}
+                    animate={{
+                      opacity: [0.6, 0.85, 0.6],
+                      scale: [0.98, 1.03, 0.98],
                     }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <div className="w-full h-full rounded-2xl" />
+                  </motion.div>
+                  <Image
+                    src="/images/logo.png"
+                    alt="GTEC"
+                    width={400}
+                    height={150}
+                    className={`object-contain opacity-90 relative z-10 ${
+                      isDark
+                        ? "drop-shadow-[0_0_60px_rgba(93,211,255,0.6)]"
+                        : "drop-shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
+                    }`}
                   />
                 </motion.div>
-                <Image
-                  src="/images/logo.png"
-                  alt="GTEC"
-                  width={400}
-                  height={150}
-                  className="object-contain opacity-90 relative"
+
+                {/* Reflejo ovalado debajo de la imagen */}
+                <motion.div
+                  animate={{
+                    scaleX: [1, 1.1, 1],
+                    opacity: [0.5, 0.7, 0.5],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute bottom-8 left-1/2 -translate-x-1/2 w-80 h-20 rounded-[50%]"
                   style={{
-                    filter:
-                      "drop-shadow(0 0 12px rgba(43,194,254,0.45)) drop-shadow(0 0 24px rgba(43,194,254,0.25))",
+                    background: isDark
+                      ? "radial-gradient(ellipse at center, rgba(93, 211, 255, 0.5) 0%, rgba(93, 211, 255, 0.2) 40%, transparent 70%)"
+                      : "radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 40%, transparent 70%)",
+                    filter: "blur(3px)",
                   }}
                 />
+              </div>
+            </motion.div>
+            {/* Content section - now below */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+              className="w-full text-center flex flex-col items-center gap-5 md:gap-10"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <Typography
+                  variant="overline"
+                  className="font-semibold text-base tracking-widest"
+                  sx={{ color: "secondary.main" }}
+                >
+                  Google Cloud Partner
+                </Typography>
               </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Content section - now below */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
-            className="w-full text-center flex flex-col items-center gap-5 md:gap-10"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Typography
-                variant="overline"
-                className="font-semibold text-base tracking-widest"
-                sx={{ color: "secondary.main" }}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
               >
-                Google Cloud Partner
-              </Typography>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <GradientTitle
-                as="h1"
-                className="mb-8 leading-tight px-4"
-                sx={{
-                  fontSize: {
-                    xs: "2rem",
-                    sm: "2.5rem",
-                    md: "3.5rem",
-                    lg: "4rem",
-                  },
-                }}
+                <GradientTitle
+                  as="h1"
+                  className="mb-8 leading-tight px-4"
+                  sx={{
+                    fontSize: {
+                      xs: "2rem",
+                      sm: "2.5rem",
+                      md: "3.5rem",
+                      lg: "4rem",
+                    },
+                  }}
+                >
+                  Transformamos tu negocio con tecnología Google
+                </GradientTitle>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
               >
-                Transformamos tu negocio con tecnología Google
-              </GradientTitle>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              <Typography
-                variant="h5"
-                className="mb-12 font-normal leading-relaxed px-4"
-                sx={{
-                  color: "text.secondary",
-                }}
+                <Typography
+                  variant="h5"
+                  className="mb-12 font-normal leading-relaxed px-4"
+                  sx={{
+                    color: "text.secondary",
+                  }}
+                >
+                  Soluciones empresariales de vanguardia para impulsar tu
+                  transformación digital
+                </Typography>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="flex flex-wrap justify-center gap-6"
               >
-                Soluciones empresariales de vanguardia para impulsar tu
-                transformación digital
-              </Typography>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-wrap justify-center gap-6"
-            >
-              <Button
-                variant="solid"
-                size="large"
-                endIcon={<ArrowForwardIcon />}
+                <Button
+                  variant="solid"
+                  size="large"
+                  endIcon={<ArrowForwardIcon />}
+                >
+                  Conoce nuestras soluciones
+                </Button>
+                <Button variant="outline" size="large">
+                  Contacto
+                </Button>
+              </motion.div>
+              {/* BADGES */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+                className="flex flex-wrap justify-center gap-8 items-center"
               >
-                Conoce nuestras soluciones
-              </Button>
-              <Button variant="outline" size="large">
-                Contacto
-              </Button>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">
+                    G
+                  </div>
+                  <div>
+                    <Typography
+                      variant="caption"
+                      display="block"
+                      className="font-semibold"
+                      color="text.primary"
+                    >
+                      Google Partner
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary">
+                      Oficial
+                    </Typography>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-linear-to-br from-tertiary to-tertiary-light flex items-center justify-center text-white font-bold text-sm">
+                    5+
+                  </div>
+                  <div>
+                    <Typography
+                      variant="caption"
+                      display="block"
+                      className="font-semibold"
+                      color="text.primary"
+                    >
+                      Great Place to Work
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary">
+                      Años consecutivos
+                    </Typography>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
-
-            {/* BADGES */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-              className="flex flex-wrap justify-center gap-8 items-center"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">
-                  G
-                </div>
-                <div>
-                  <Typography
-                    variant="caption"
-                    display="block"
-                    className="font-semibold"
-                    color="text.primary"
-                  >
-                    Google Partner
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    Oficial
-                  </Typography>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-linear-to-br from-tertiary to-tertiary-light flex items-center justify-center text-white font-bold text-sm">
-                  5+
-                </div>
-                <div>
-                  <Typography
-                    variant="caption"
-                    display="block"
-                    className="font-semibold"
-                    color="text.primary"
-                  >
-                    Great Place to Work
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    Años consecutivos
-                  </Typography>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </div>
+      <div
+        className={`h-60 ${isDark ? "bg-[#0a0a0a]" : "bg-linear-to-b from-secondary-light to-white"}`}
+      ></div>
+    </>
   );
 }

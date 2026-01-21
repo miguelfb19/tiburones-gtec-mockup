@@ -1,6 +1,6 @@
 'use client';
 
-import { createTheme } from '@mui/material/styles';
+import { createTheme, ThemeOptions } from '@mui/material/styles';
 
 // GTEC Brand Colors
 const colors = {
@@ -15,8 +15,9 @@ const colors = {
   tertiaryDark: '#b30047',
 };
 
-export const theme = createTheme({
+const getDesignTokens = (mode: 'light' | 'dark'): ThemeOptions => ({
   palette: {
+    mode,
     primary: {
       main: colors.primary,
       light: colors.primaryLight,
@@ -34,6 +35,14 @@ export const theme = createTheme({
       light: colors.tertiaryLight,
       dark: colors.tertiaryDark,
       contrastText: '#ffffff',
+    },
+    background: {
+      default: mode === 'dark' ? '#0a0a0a' : '#ffffff',
+      paper: mode === 'dark' ? '#1a1a1a' : '#ffffff',
+    },
+    text: {
+      primary: mode === 'dark' ? '#ffffff' : '#171717',
+      secondary: mode === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)',
     },
   },
   typography: {
@@ -93,11 +102,11 @@ export const theme = createTheme({
           transition: 'all 0.3s ease',
           '&:hover': {
             transform: 'translateY(-2px)',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            boxShadow: mode === 'light' ? '0 4px 12px rgba(0, 0, 0, 0.15)' : '0 4px 12px rgba(255, 255, 255, 0.15)',
           },
         },
         contained: {
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          boxShadow: mode === 'light' ? '0 2px 8px rgba(0, 0, 0, 0.1)' : '0 2px 8px rgba(255, 255, 255, 0.05)',
         },
       },
     },
@@ -105,10 +114,10 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 12,
-          boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
+          boxShadow: mode === 'light' ? '0 2px 12px rgba(0, 0, 0, 0.08)' : '0 2px 12px rgba(0, 0, 0, 0.4)',
           transition: 'all 0.3s ease',
           '&:hover': {
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
+            boxShadow: mode === 'light' ? '0 8px 24px rgba(0, 0, 0, 0.12)' : '0 8px 24px rgba(0, 0, 0, 0.5)',
             transform: 'translateY(-4px)',
           },
         },
@@ -116,3 +125,6 @@ export const theme = createTheme({
     },
   },
 });
+
+export const getTheme = (mode: 'light' | 'dark') => createTheme(getDesignTokens(mode));
+export const theme = getTheme('light'); // Fallback for backward compatibility if needed

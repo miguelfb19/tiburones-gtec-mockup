@@ -1,14 +1,17 @@
 'use client';
 
-import { Typography } from '@mui/material';
+import { Typography, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Button } from '@/components/ui/Button';
 import { GradientTitle } from '@/components/ui/GradientTitle';
 
 export function CTA() {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
+
   return (
-    <section className="relative overflow-hidden py-16 md:py-24">
+    <section className={`relative overflow-hidden py-16 md:py-24 ${isDark ? 'bg-[#0a0a0a]' : 'bg-white'}`}>
       <div
         className="absolute inset-0 opacity-5"
       />
