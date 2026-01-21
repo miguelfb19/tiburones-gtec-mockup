@@ -17,7 +17,7 @@ export function FadeIn({
   duration = 0.5, 
   direction = 'up',
   className = '' 
-}: FadeInProps) {
+}: Readonly<FadeInProps>) {
   const directions = {
     up: { y: 40 },
     down: { y: -40 },
@@ -56,7 +56,7 @@ interface ScaleInProps {
   className?: string;
 }
 
-export function ScaleIn({ children, delay = 0, className = '' }: ScaleInProps) {
+export function ScaleIn({ children, delay = 0, className = '' }: Readonly<ScaleInProps>) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
