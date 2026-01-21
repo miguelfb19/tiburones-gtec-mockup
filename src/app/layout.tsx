@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +17,16 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "GTEC - Google Cloud Partner | Soluciones de Software",
-  description: "Partner oficial de Google especializado en Modernización Digital, Google Workspace, IA Generativa, Analítica de Datos y Servicios Administrados. Great Place to Work durante más de 5 años.",
-  keywords: ["Google Cloud Partner", "Google Workspace", "IA Generativa", "Analítica de Datos", "Modernización Digital", "Servicios Administrados"],
+  description:
+    "Partner oficial de Google especializado en Modernización Digital, Google Workspace, IA Generativa, Analítica de Datos y Servicios Administrados. Great Place to Work durante más de 5 años.",
+  keywords: [
+    "Google Cloud Partner",
+    "Google Workspace",
+    "IA Generativa",
+    "Analítica de Datos",
+    "Modernización Digital",
+    "Servicios Administrados",
+  ],
 };
 
 export default function RootLayout({
@@ -31,10 +41,11 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
+          <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
   );
 }
-

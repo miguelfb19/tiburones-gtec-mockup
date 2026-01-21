@@ -18,7 +18,7 @@ export function Hero() {
   return (
     <>
       <div
-        className={`relative overflow-hidden pb-10 ${isDark ? "" : "bg-linear-to-b from-white to-secondary-light"}`}
+        className={`relative overflow-hidden ${isDark ? "" : "bg-linear-to-b from-white to-secondary-light"}`}
       >
         {/* Estrellas animadas solo en modo oscuro */}
         {isDark && <Stars />}
@@ -179,7 +179,7 @@ export function Hero() {
         </div>
       </div>
       <div
-        className={`h-60 ${isDark ? "bg-[#0a0a0a]" : "bg-linear-to-b from-secondary-light to-white"}`}
+        className={`h-30 ${isDark ? "bg-[#0a0a0a]" : "bg-linear-to-b from-secondary-light to-transparent"}`}
       ></div>
     </>
   );

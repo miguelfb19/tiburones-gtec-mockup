@@ -39,7 +39,19 @@ export const Customers = () => {
         </div>
 
         {/* Carousel infinito */}
-        <div className="relative overflow-hidden w-full max-w-6xl">
+        <div className="relative overflow-hidden w-full max-w-8xl">
+          {/* Gradiente izquierdo */}
+          <div
+            className={`absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none bg-linear-to-r ${
+              isDark ? "from-[#0a0a0a]" : "from-white"
+            } to-transparent`}
+          />
+          {/* Gradiente derecho */}
+          <div
+            className={`absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none bg-linear-to-l ${
+              isDark ? "from-[#0a0a0a]" : "from-white"
+            } to-transparent`}
+          />
           <motion.div
             className="flex gap-12"
             animate={{
@@ -67,11 +79,7 @@ export const Customers = () => {
                   alt={customer.name}
                   width={160}
                   height={80}
-                  className="object-contain"
-                  style={{
-                    filter: isDark ? "brightness(1.2)" : "",
-                    opacity: 0.7,
-                  }}
+                  className={`object-contain ${isDark ? "brightness-110" : ""} opacity-70`}
                 />
               </div>
             ))}

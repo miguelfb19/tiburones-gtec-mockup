@@ -1,89 +1,92 @@
-'use client';
+"use client";
 
-import { Card, CardContent, Typography, useTheme } from '@mui/material';
-import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { Typography, useTheme } from "@mui/material";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface ServiceCardProps {
   title: string;
   description: string;
-  icon: ReactNode;
-  color: 'primary' | 'secondary' | 'tertiary';
-  delay?: number;
+  img: string;
+  color: "primary" | "secondary" | "tertiary";
+  invert?: boolean;
 }
 
-export function ServiceCard({ title, description, icon, color, delay = 0 }: Readonly<ServiceCardProps>) {
+export function ServiceCard({
+  title,
+  description,
+  img,
+  color,
+  invert = false,
+}: Readonly<ServiceCardProps>) {
   const theme = useTheme();
-  const isDark = theme.palette.mode === 'dark';
+  const isDark = theme.palette.mode === "dark";
 
   const colorMap = {
     primary: {
-      bg: 'rgba(43, 79, 124, 0.05)',
-      border: '#2B4F7C',
-      iconBg: '#2B4F7C',
+      bg: "rgba(43, 79, 124, 0.05)",
+      border: "#2B4F7C",
+      iconBg: isDark ? "white" : "#2B4F7C",
     },
     secondary: {
-      bg: 'rgba(43, 194, 254, 0.05)',
-      border: '#2bc2fe',
-      iconBg: '#2bc2fe',
+      bg: "rgba(43, 194, 254, 0.05)",
+      border: "#2bc2fe",
+      iconBg: "#2bc2fe",
     },
     tertiary: {
-      bg: 'rgba(228, 0, 92, 0.05)',
-      border: '#e4005c',
-      iconBg: '#e4005c',
+      bg: "rgba(228, 0, 92, 0.05)",
+      border: "#e4005c",
+      iconBg: "#e4005c",
     },
   };
 
   const selectedColor = colorMap[color];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      whileHover={{ y: -8 }}
+    <div
+      className={`flex ${invert ? "flex-row-reverse" : ""} items-center gap-10`}
     >
-      <Card
-        sx={{
-          height: '100%',
-          border: `2px solid transparent`,
-          transition: 'all 0.3s ease',
-          '&:hover': {
-            borderColor: selectedColor.border,
-            boxShadow: `0 12px 32px ${selectedColor.border}20`,
-          },
-        }}
-        className={`${isDark ? 'hover:bg-linear-to-br! from-[#1a1a1a] to-stone-700' : `hover:bg-linear-to-bl! from-${color} via-50% via-white to-white`}`}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        whileHover={{ y: -8 }}
+        className={`w-110 shrink-0 hover:shadow-2xl shadow-secondary-light`}
       >
-        <CardContent className="p-8">
-          <div
-            className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 text-white"
-            style={{ backgroundColor: selectedColor.iconBg }}
-          >
-            {icon}
-          </div>
-          
-          <Typography 
-            variant="h5" 
-            component="h3" 
-            className="mb-4 font-semibold"
-            sx={{ 
+        <Image
+          src={img}
+          alt={title}
+          width={1000}
+          height={1000}
+          className="shadow rounded-xl w-full h-full object-cover"
+        />
+      </motion.div>
+      <div className="flex flex-col gap-5 h-full justify-center">
+        <motion.div
+          whileHover={{ y: -8 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className={`rounded-xl p-5 hover:shadow-2xl shadow-secondary-light transition-shadow`}
+        >
+          <Typography
+            variant="h2"
+            component="h3"
+            className="font-semibold"
+            sx={{
               color: selectedColor.iconBg,
             }}
           >
             {title}
           </Typography>
-          
-          <Typography 
-            variant="body1" 
+          <Typography
+            variant="body1"
             color="text.secondary"
             className="leading-relaxed"
           >
             {description}
           </Typography>
-        </CardContent>
-      </Card>
-    </motion.div>
+        </motion.div>
+      </div>
+    </div>
   );
 }

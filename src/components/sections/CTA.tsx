@@ -59,17 +59,17 @@ export function CTA() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`text-center border-quaternary px-3 py-8 rounded-lg shadow-lg bg-linear-to-br ${isDark ? "from-stone-900 via-40% via-gray-300 to-stone-900 shadow-white/30" : "from-secondary-light/70 via-70% via-white to-secondary-light/70 border"}`}
+                className={`text-center border-quaternary px-3 py-8 rounded-lg shadow-lg ${isDark ? "shadow-white" : ""} bg-linear-to-br from-secondary-light/70 via-70% via-white to-secondary-light/70`}
               >
                 <Typography
                   variant="h2"
-                  className={`font-bold ${isDark ? "text-gray-100" : "text-secondary"} mb-2`}
+                  className={`font-bold text-secondary mb-2`}
                 >
                   {stat.number}
                 </Typography>
                 <Typography
                   variant="body1"
-                  className={`font-semibold! ${isDark ? "text-white" : "text-gray-600"}`}
+                  className={`font-semibold! text-gray-600`}
                 >
                   {stat.label}
                 </Typography>

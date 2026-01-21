@@ -1,4 +1,4 @@
-import { Typography, TypographyProps } from "@mui/material";
+import { Typography, TypographyProps, useTheme } from "@mui/material";
 import { ReactNode } from "react";
 
 interface GradientTitleProps extends Omit<TypographyProps, "children"> {
@@ -12,12 +12,16 @@ export function GradientTitle({
   sx = {},
   ...props
 }: GradientTitleProps) {
+  
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
+
   return (
     <Typography
       variant={as}
       className="font-bold"
       sx={{
-        background: "linear-gradient(135deg, #2B4F7C 0%, #2bc2fe 100%)",
+        background: isDark ? "linear-gradient(135deg, white 0%, #2bc2fe 100%)" : "linear-gradient(135deg, #2B4F7C 0%, #2bc2fe 100%)",
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
         backgroundClip: "text",

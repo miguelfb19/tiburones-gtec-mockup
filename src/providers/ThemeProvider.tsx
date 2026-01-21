@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useMemo } from 'react';
+import { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { getTheme } from '@/theme/muiTheme';
@@ -24,19 +24,20 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: Readonly<ThemeProviderProps>) {
-  // Initialize mode from localStorage or system preference
-  const [mode, setMode] = useState<'light' | 'dark'>(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-      if (savedTheme) {
-        return savedTheme;
-      }
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
+  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = useState(false);
+
+  
+  useEffect(() => {
+    // eslint-disable-next-line
+    setMounted(true);
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    if (savedTheme) {
+      setMode(savedTheme);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setMode('dark');
     }
-    return 'light';
-  });
+  }, []);
 
   const colorMode = useMemo(
     () => ({
@@ -56,6 +57,11 @@ export function ThemeProvider({ children }: Readonly<ThemeProviderProps>) {
     () => getTheme(mode),
     [mode],
   );
+
+  // Prevent flash of wrong theme
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <ColorModeContext.Provider value={colorMode}>

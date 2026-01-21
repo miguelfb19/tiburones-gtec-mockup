@@ -12,7 +12,7 @@ export const Awards = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.9 }}
-      className="flex flex-wrap justify-center gap-8 items-center"
+      className="flex flex-wrap justify-center gap-8 items-center pb-10"
     >
       <Image
         src="/images/google_partner.avif"
