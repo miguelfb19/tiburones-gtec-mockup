@@ -1,20 +1,21 @@
-'use client';
+"use client";
 
-import { Typography, useTheme } from '@mui/material';
-import { motion } from 'framer-motion';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Button } from '@/components/ui/Button';
-import { GradientTitle } from '@/components/ui/GradientTitle';
+import { Typography, useTheme } from "@mui/material";
+import { motion } from "framer-motion";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Button } from "@/components/ui/Button";
+import { GradientTitle } from "@/components/ui/GradientTitle";
+import { experienceData } from "@/contants/experience-data";
 
 export function CTA() {
   const theme = useTheme();
-  const isDark = theme.palette.mode === 'dark';
+  const isDark = theme.palette.mode === "dark";
 
   return (
-    <section className={`relative overflow-hidden py-16 md:py-24 ${isDark ? '' : 'bg-white'}`}>
-      <div
-        className="absolute inset-0 opacity-5"
-      />
+    <section
+      className={`relative overflow-hidden py-16 md:py-24 ${isDark ? "" : "bg-white"}`}
+    >
+      <div className="absolute inset-0 opacity-5" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -28,7 +29,7 @@ export function CTA() {
             as="h2"
             className="mb-8 text-center"
             sx={{
-              fontSize: { xs: '2rem', md: '3rem' },
+              fontSize: { xs: "2rem", md: "3rem" },
             }}
           >
             ¿Listo para transformar tu empresa?
@@ -37,48 +38,38 @@ export function CTA() {
             variant="h6"
             className="mb-12 text-gray-600 max-w-xl mx-auto font-normal text-center"
           >
-            Únete a las empresas que ya confían en nosotros como su partner tecnológico de Google
+            Únete a las empresas que ya confían en nosotros como su partner
+            tecnológico de Google
           </Typography>
           <div className="flex gap-6 justify-center flex-wrap mb-12">
-            <Button
-              variant="solid"
-              size="large"
-              endIcon={<ArrowForwardIcon />}
-            >
+            <Button variant="solid" size="large" endIcon={<ArrowForwardIcon />}>
               Solicitar una demo
             </Button>
-            <Button
-              variant="outline"
-              size="large"
-            >
+            <Button variant="outline" size="large">
               Hablar con un experto
             </Button>
           </div>
 
           {/* Trust indicators */}
-          <div className="mt-8 pt-12 border-t border-gray-200 flex justify-center gap-16 flex-wrap">
-            {[
-              { number: '500+', label: 'Clientes satisfechos' },
-              { number: '5+', label: 'Años como Google Partner' },
-              { number: '99.9%', label: 'Uptime garantizado' },
-            ].map((stat, index) => (
+          <div className="mt-8 pt-12 border-t border-gray-200 grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+            {experienceData.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
+                className={`text-center border-quaternary px-3 py-8 rounded-lg shadow-lg bg-linear-to-br ${isDark ? "from-stone-900 via-40% via-gray-300 to-stone-900 shadow-white/30" : "from-secondary-light/70 via-70% via-white to-secondary-light/70 border"}`}
               >
                 <Typography
-                  variant="h3"
-                  className="font-bold text-secondary mb-2"
+                  variant="h2"
+                  className={`font-bold ${isDark ? "text-gray-100" : "text-secondary"} mb-2`}
                 >
                   {stat.number}
                 </Typography>
                 <Typography
                   variant="body1"
-                  className="text-gray-600"
+                  className={`font-semibold! ${isDark ? "text-white" : "text-gray-600"}`}
                 >
                   {stat.label}
                 </Typography>
