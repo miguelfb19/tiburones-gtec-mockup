@@ -79,3 +79,19 @@ html {
 .animate-bubble {
   animation: bubble 0.9s ease-out forwards;
 }
+
+@keyframes linearFade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-linearFade {
+  animation: linearFade 4s linear infinite;
+}

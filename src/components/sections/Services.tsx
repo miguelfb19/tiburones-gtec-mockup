@@ -6,6 +6,7 @@ import { ServiceCard } from "@/components/ui/ServiceCard";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { services } from "@/contants/solutions";
 import { Stars } from '../animations/Stars';
+import FloatingClouds from "../animations/FloatingClouds";
 
 export function Services() {
   const theme = useTheme();
@@ -13,7 +14,7 @@ export function Services() {
 
   return (
     <section className={`py-10 ${isDark ? "" : "bg-white"} relative`}>
-      {isDark && <Stars />}
+      {isDark ? <Stars /> : <FloatingClouds />}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn
           direction="up"
