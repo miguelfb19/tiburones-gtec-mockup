@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Typography, useTheme } from "@mui/material";
 import { GradientTitle } from "@/components/ui/GradientTitle";
 import { customers } from "@/contants/customers";
+import { FadeIn } from "../animations/FadeIn";
 
 export const Customers = () => {
   const theme = useTheme();
@@ -16,7 +17,11 @@ export const Customers = () => {
 
   return (
     <section className="py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <FadeIn
+        direction="right"
+        duration={1}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center"
+      >
         <div className="text-center mb-12 flex flex-col items-center gap-5">
           <Typography
             variant="overline"
@@ -85,7 +90,7 @@ export const Customers = () => {
             ))}
           </motion.div>
         </div>
-      </div>
+      </FadeIn>
     </section>
   );
 };

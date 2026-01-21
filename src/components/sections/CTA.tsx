@@ -6,6 +6,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Button } from "@/components/ui/Button";
 import { GradientTitle } from "@/components/ui/GradientTitle";
 import { experienceData } from "@/contants/experience-data";
+import { FadeIn } from "../animations/FadeIn";
 
 export function CTA() {
   const theme = useTheme();
@@ -51,15 +52,20 @@ export function CTA() {
           </div>
 
           {/* Trust indicators */}
-          <div className="mt-8 pt-12 border-t border-gray-200 grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-            {experienceData.map((stat, index) => (
+          <FadeIn
+            direction="up"
+            duration={1}
+            className="mt-8 pt-12 border-t border-gray-200 grid grid-cols-1 md:grid-cols-3 gap-6 w-full"
+          >
+            {experienceData.map((stat) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.05, rotate: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`text-center border-quaternary px-3 py-8 rounded-lg shadow-lg ${isDark ? "shadow-white" : ""} bg-linear-to-br from-secondary-light/70 via-70% via-white to-secondary-light/70`}
+                transition={{ duration: 0.2 }}
+                className={`text-center border-quaternary px-3 py-8 rounded-lg shadow-lg ${isDark ? "shadow-white" : ""} bg-linear-to-br from-secondary-light/70 via-70% via-white to-secondary-light/70 hover:via-40% transition-colors duration-300`}
               >
                 <Typography
                   variant="h2"
@@ -75,7 +81,7 @@ export function CTA() {
                 </Typography>
               </motion.div>
             ))}
-          </div>
+          </FadeIn>
         </motion.div>
       </div>
     </section>
