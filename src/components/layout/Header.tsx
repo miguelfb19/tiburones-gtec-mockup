@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/Button";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { useColorMode } from "@/providers/ThemeProvider";
+import { menuItems } from "@/contants/menu-items";
 
 export function Header() {
   const theme = useTheme();
@@ -24,17 +25,11 @@ export function Header() {
     <AppBar
       position="sticky"
       elevation={0}
-      sx={{
-        backgroundColor: isDark
-          ? "rgba(18, 18, 18, 0.95)"
-          : "rgba(255, 255, 255, 0.95)",
-        backdropFilter: "blur(10px)",
-        borderBottom: `1px solid ${isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.08)"}`,
-        transition: "background-color 0.3s ease, border-color 0.3s ease",
-      }}
+      className={`min-h-20 ${isDark ? "bg-stone-900 border-stone-900" : "bg-white! border-gray-200"} backdrop-blur-md border-b transition-all justify-center`}
     >
       <Container maxWidth="xl">
         <Toolbar sx={{ justifyContent: "space-between", py: 1 }}>
+          {/* LOGO */}
           <Link href="/" className="flex items-center">
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -53,15 +48,15 @@ export function Header() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-2">
-            <Button variant="ghost" size="medium">
-              Soluciones
-            </Button>
-            <Button variant="ghost" size="medium">
-              Nosotros
-            </Button>
-            <Button variant="solid" size="medium" className="ml-4">
-              Contacto
-            </Button>
+            {menuItems.map((item) => (
+              <Button
+                key={item.label}
+                variant={item.label === "Contacto" ? "solid" : "ghost"}
+                size="medium"
+              >
+                <Link href={item.href}>{item.label}</Link>
+              </Button>
+            ))}
             <IconButton
               sx={{
                 ml: 2,

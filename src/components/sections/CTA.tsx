@@ -11,7 +11,7 @@ export function CTA() {
   const isDark = theme.palette.mode === 'dark';
 
   return (
-    <section className={`relative overflow-hidden py-16 md:py-24 ${isDark ? 'bg-[#0a0a0a]' : 'bg-white'}`}>
+    <section className={`relative overflow-hidden py-16 md:py-24 ${isDark ? '' : 'bg-white'}`}>
       <div
         className="absolute inset-0 opacity-5"
       />

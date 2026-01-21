@@ -7,6 +7,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { GradientTitle } from "@/components/ui/GradientTitle";
 import { Button } from "@/components/ui/Button";
 import { Stars } from "../animations/Stars";
+import { Awards } from "./Awards";
 
 export function Hero() {
   const theme = useTheme();
@@ -17,7 +18,7 @@ export function Hero() {
   return (
     <>
       <div
-        className={`relative overflow-hidden pb-10 ${isDark ? "bg-[#0a0a0a]" : "bg-linear-to-b from-white to-secondary-light"}`}
+        className={`relative overflow-hidden pb-10 ${isDark ? "" : "bg-linear-to-b from-white to-secondary-light"}`}
       >
         {/* Estrellas animadas solo en modo oscuro */}
         {isDark && <Stars />}
@@ -169,50 +170,10 @@ export function Hero() {
                   Contacto
                 </Button>
               </motion.div>
+
               {/* BADGES */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.9 }}
-                className="flex flex-wrap justify-center gap-8 items-center"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">
-                    G
-                  </div>
-                  <div>
-                    <Typography
-                      variant="caption"
-                      display="block"
-                      className="font-semibold"
-                      color="text.primary"
-                    >
-                      Google Partner
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      Oficial
-                    </Typography>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-linear-to-br from-tertiary to-tertiary-light flex items-center justify-center text-white font-bold text-sm">
-                    5+
-                  </div>
-                  <div>
-                    <Typography
-                      variant="caption"
-                      display="block"
-                      className="font-semibold"
-                      color="text.primary"
-                    >
-                      Great Place to Work
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      Años consecutivos
-                    </Typography>
-                  </div>
-                </div>
-              </motion.div>
+              <Awards />
+
             </motion.div>
           </div>
         </div>

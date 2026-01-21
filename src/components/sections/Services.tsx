@@ -48,7 +48,7 @@ export function Services() {
   const isDark = theme.palette.mode === 'dark';
 
   return (
-    <section className={`py-10 ${isDark ? 'bg-[#0a0a0a]' : 'bg-white'}`}>
+    <section className={`py-10 ${isDark ? '' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up" className="text-center mb-12 flex flex-col items-center gap-5">
           <Typography

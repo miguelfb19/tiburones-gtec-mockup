@@ -1,0 +1,83 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Typography, useTheme } from "@mui/material";
+import { GradientTitle } from "@/components/ui/GradientTitle";
+import { customers } from "@/contants/customers";
+
+export const Customers = () => {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
+  const isMobile = theme.breakpoints.down("sm");
+
+  // Triplicar los logos para asegurar continuidad perfecta
+  const duplicatedCustomers = [...customers, ...customers, ...customers];
+
+  return (
+    <section className="py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+        <div className="text-center mb-12 flex flex-col items-center gap-5">
+          <Typography
+            variant="overline"
+            className="font-semibold text-base tracking-widest mb-4 block"
+            sx={{ color: "secondary.main" }}
+          >
+            Nuestros Clientes
+          </Typography>
+          <GradientTitle as="h2" className="mb-6 text-center">
+            Confían en nosotros
+          </GradientTitle>
+          <Typography
+            variant="h6"
+            className="max-w-2xl mx-auto font-normal"
+            sx={{ color: "text.secondary" }}
+          >
+            Empresas líderes que han transformado su negocio con nuestras
+            soluciones
+          </Typography>
+        </div>
+
+        {/* Carousel infinito */}
+        <div className="relative overflow-hidden w-full max-w-6xl">
+          <motion.div
+            className="flex gap-12"
+            animate={{
+              x: [0, -((200 + 48) * customers.length)],
+            }}
+            transition={{
+              x: {
+                duration: isMobile ? 15 : 20,
+                repeat: Infinity,
+                repeatType: "loop",
+                ease: "linear",
+              },
+            }}
+          >
+            {duplicatedCustomers.map((customer, index) => (
+              <div
+                key={`${customer.name}-${index}`}
+                className={`shrink-0 flex items-center justify-center p-6 rounded-lg ${
+                  isDark ? "bg-[#1a1a1a]" : "bg-white"
+                } shadow-md hover:shadow-xl transition-shadow duration-300`}
+                style={{ width: "200px", height: "120px" }}
+              >
+                <Image
+                  src={customer.logo}
+                  alt={customer.name}
+                  width={160}
+                  height={80}
+                  className="object-contain"
+                  style={{
+                    filter: isDark ? "brightness(1.2)" : "",
+                    opacity: 0.7,
+                  }}
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
