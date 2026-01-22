@@ -44,7 +44,7 @@ export const Customers = () => {
         </div>
 
         {/* Carousel infinito */}
-        <div className="relative overflow-hidden w-full max-w-8xl">
+        <div className="relative overflow-hidden w-full max-w-8xl py-5">
           {/* Gradiente izquierdo */}
           <div
             className={`absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none bg-linear-to-r ${
