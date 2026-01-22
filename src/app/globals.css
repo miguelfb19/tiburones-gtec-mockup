@@ -85,7 +85,7 @@ html {
     opacity: 0;
   }
   50% {
-    opacity: 0.45;
+    opacity: 0.4;
   }
   100% {
     opacity: 0;
@@ -93,5 +93,5 @@ html {
 }
 
 .animate-linearFade {
-  animation: linearFade 4s linear infinite;
+  animation: linearFade linear infinite;
 }

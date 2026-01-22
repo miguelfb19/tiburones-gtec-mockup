@@ -79,8 +79,8 @@ export function Hero() {
                 {/* Reflejo ovalado debajo de la imagen */}
                 <motion.div
                   animate={{
-                    scaleX: [1, 1.1, 1],
-                    opacity: [0.5, 0.7, 0.5],
+                    scaleX: [1.4, 1, 1.4],
+                    opacity: [1, 0.8, 1],
                   }}
                   transition={{
                     duration: 4,
