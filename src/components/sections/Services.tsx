@@ -13,7 +13,7 @@ export function Services() {
   const isDark = theme.palette.mode === "dark";
 
   return (
-    <section className={`py-10 ${isDark ? "" : "bg-white"} relative overflow-visible`}>
+    <section className={`py-10 ${isDark ? "" : "bg-white"} relative overflow-hidden`}>
       {isDark ? <Stars /> : <FloatingClouds />}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <FadeIn
