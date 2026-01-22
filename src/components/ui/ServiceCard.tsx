@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Button } from "./Button";
 import Link from "next/link";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 interface ServiceCardProps {
   title: string;
@@ -68,26 +69,46 @@ export function ServiceCard({
           className="shadow rounded-xl w-full h-full object-cover"
         />
       </motion.div>
-      <div id="description" className="flex flex-col gap-5 h-full justify-center">
+      <div
+        id="description"
+        className="flex flex-col gap-5 h-full justify-center"
+      >
         <motion.div
           whileHover={{ y: -8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           onHoverStart={() => setIsHovered(true)}
           onHoverEnd={() => setIsHovered(false)}
-          className={`rounded-xl p-5 hover:shadow-2xl shadow-secondary-light transition-shadow relative overflow-hidden`}
+          className="rounded-xl p-5 hover:shadow-2xl shadow-secondary-light transition-shadow relative overflow-hidden"
         >
           {/* Contenido con blur */}
-          <div className={`transition-all duration-300 ${isHovered ? 'blur-sm' : 'blur-0'}`}>
-            <Typography
-              variant="h2"
-              component="h3"
-              className="font-semibold"
-              sx={{
-                color: selectedColor.iconBg,
-              }}
-            >
-              {title}
-            </Typography>
+          <Link
+            href={link}
+            className="transition-all duration-300 cursor-pointer"
+          >
+            <div className="flex items-center gap-5">
+              <Typography
+                variant="h2"
+                component="h3"
+                className="font-semibold"
+                sx={{
+                  color: selectedColor.iconBg,
+                }}
+              >
+                {title}
+              </Typography>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isHovered ? 1 : 0 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center justify-center pointer-events-none"
+              >
+                <div className="pointer-events-auto">
+                  <Button variant="ghost" size="medium">
+                    <ArrowForwardIcon />
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
             <Typography
               variant="body1"
               color="text.secondary"
@@ -95,21 +116,7 @@ export function ServiceCard({
             >
               {description}
             </Typography>
-          </div>
-
-          {/* Botón Ver más con overlay */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isHovered ? 1 : 0 }}
-            transition={{ duration: 0.2 }}
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          >
-            <div className="pointer-events-auto">
-              <Button variant="outline" size="medium">
-                <Link href={link}>Ver más</Link>
-              </Button>
-            </div>
-          </motion.div>
+          </Link>
         </motion.div>
       </div>
     </div>
