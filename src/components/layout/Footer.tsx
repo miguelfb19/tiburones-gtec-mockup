@@ -4,6 +4,8 @@ import { Typography, IconButton, useTheme } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import EmailIcon from '@mui/icons-material/Email';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import Image from 'next/image';
 
 export function Footer() {
@@ -101,9 +103,27 @@ export function Footer() {
               >
                 <EmailIcon />
               </IconButton>
+              <IconButton 
+                size="small"
+                sx={{ 
+                  color: 'error.main',
+                  '&:hover': { backgroundColor: 'rgba(228, 0, 92, 0.08)' }
+                }}
+              >
+                <InstagramIcon />
+              </IconButton>
+              <IconButton
+                size="small"
+                sx={{
+                  color: 'primary.main',
+                  '&:hover': { backgroundColor: 'rgba(43, 79, 124, 0.08)' }
+                }}
+              >
+                <FacebookIcon />
+              </IconButton>
             </div>
             <Typography variant="body2" color="text.secondary">
-              info@gtec.com
+              info@gtec.com.mx
             </Typography>
           </div>
         </div>
