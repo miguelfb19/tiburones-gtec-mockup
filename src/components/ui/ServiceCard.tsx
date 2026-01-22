@@ -3,12 +3,16 @@
 import { Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
+import { Button } from "./Button";
+import Link from "next/link";
 
 interface ServiceCardProps {
   title: string;
   description: string;
   img: string;
   color: "primary" | "secondary" | "tertiary";
+  link: string;
   invert?: boolean;
 }
 
@@ -17,10 +21,12 @@ export function ServiceCard({
   description,
   img,
   color,
+  link,
   invert = false,
 }: Readonly<ServiceCardProps>) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
+  const [isHovered, setIsHovered] = useState(false);
 
   const colorMap = {
     primary: {
@@ -62,29 +68,48 @@ export function ServiceCard({
           className="shadow rounded-xl w-full h-full object-cover"
         />
       </motion.div>
-      <div className="flex flex-col gap-5 h-full justify-center">
+      <div id="description" className="flex flex-col gap-5 h-full justify-center">
         <motion.div
           whileHover={{ y: -8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className={`rounded-xl p-5 hover:shadow-2xl shadow-secondary-light transition-shadow`}
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
+          className={`rounded-xl p-5 hover:shadow-2xl shadow-secondary-light transition-shadow relative overflow-hidden`}
         >
-          <Typography
-            variant="h2"
-            component="h3"
-            className="font-semibold"
-            sx={{
-              color: selectedColor.iconBg,
-            }}
+          {/* Contenido con blur */}
+          <div className={`transition-all duration-300 ${isHovered ? 'blur-sm' : 'blur-0'}`}>
+            <Typography
+              variant="h2"
+              component="h3"
+              className="font-semibold"
+              sx={{
+                color: selectedColor.iconBg,
+              }}
+            >
+              {title}
+            </Typography>
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              className="leading-relaxed"
+            >
+              {description}
+            </Typography>
+          </div>
+
+          {/* Botón Ver más con overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
           >
-            {title}
-          </Typography>
-          <Typography
-            variant="body1"
-            color="text.secondary"
-            className="leading-relaxed"
-          >
-            {description}
-          </Typography>
+            <div className="pointer-events-auto">
+              <Button variant="outline" size="medium">
+                <Link href={link}>Ver más</Link>
+              </Button>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>

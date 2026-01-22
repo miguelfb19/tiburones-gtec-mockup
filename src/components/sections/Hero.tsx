@@ -24,7 +24,7 @@ export function Hero() {
         {isDark && <Stars />}
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative flex flex-col items-center w-full">
+          <div className="relative flex flex-col items-center gap-10 w-full">
             <motion.div
               className="absolute inset-0 pointer-events-none flex justify-center z-0"
               initial={{ opacity: 0.6 }}
@@ -107,19 +107,6 @@ export function Hero() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                <Typography
-                  variant="overline"
-                  className="font-semibold text-base tracking-widest"
-                  sx={{ color: "secondary.main" }}
-                >
-                  Google Cloud Partner
-                </Typography>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
                 <GradientTitle
@@ -171,9 +158,8 @@ export function Hero() {
                 </Button>
               </motion.div>
 
-              {/* BADGES */}
+              {/* RECONOCIMIENTOS */}
               <Awards />
-
             </motion.div>
           </div>
         </div>
