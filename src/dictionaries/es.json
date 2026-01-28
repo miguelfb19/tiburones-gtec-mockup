@@ -46,7 +46,21 @@
   "cta": {
     "title": "¿Listo para transformar tu empresa?",
     "subtitle": "Únete a las empresas que ya confían en nosotros como su partner tecnológico de Google",
-    "button": "Solicitar una demo"
+    "button": "Solicitar una demo",
+    "trustIndicators": [
+      {
+        "number": "20+",
+        "label": "Años de experiencia"
+      },
+      {
+        "number": "100+",
+        "label": "Consultores certificados"
+      },
+      {
+        "number": "250+",
+        "label": "Proyectos exitosos"
+      }
+    ]
   },
   "about": {
     "title": "Sobre Nosotros",

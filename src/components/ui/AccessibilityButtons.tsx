@@ -72,7 +72,7 @@ export const AccessibilityButtons = ({ isDark }: Props) => {
         >
           <span className="text-2xl">🇪🇸</span>
           <span className={isDark ? "text-white" : "text-gray-900"}>
-            Español
+            ES
           </span>
         </MenuItem>
         <MenuItem
@@ -81,7 +81,7 @@ export const AccessibilityButtons = ({ isDark }: Props) => {
         >
           <span className="text-2xl">🇺🇸</span>
           <span className={isDark ? "text-white" : "text-gray-900"}>
-            English
+            EN
           </span>
         </MenuItem>
       </Menu>

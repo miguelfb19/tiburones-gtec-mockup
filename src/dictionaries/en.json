@@ -46,7 +46,21 @@
   "cta": {
     "title": "Ready to transform your company?",
     "subtitle": "Join the companies that already trust us as their Google technology partner",
-    "button": "Request a demo"
+    "button": "Request a demo",
+    "trustIndicators": [
+      {
+        "number": "20+",
+        "label": "Years of experience"
+      },
+      {
+        "number": "100+",
+        "label": "Certified consultants"
+      },
+      {
+        "number": "250+",
+        "label": "Successful projects"
+      }
+    ]
   },
   "about": {
     "title": "About Us",

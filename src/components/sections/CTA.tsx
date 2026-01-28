@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Button } from "@/components/ui/Button";
 import { GradientTitle } from "@/components/ui/GradientTitle";
-import { experienceData } from "@/contants/experience-data";
 import { FadeIn } from "../animations/FadeIn";
 import { getDictionary } from "@/lib/dictionaries";
 
@@ -61,7 +60,7 @@ export function CTA({ dict }: CTAProps) {
             duration={1}
             className="mt-8 pt-12 border-t border-gray-200 grid grid-cols-1 md:grid-cols-3 gap-6 w-full"
           >
-            {experienceData.map((stat) => (
+            {dict.cta.trustIndicators.map((stat) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
