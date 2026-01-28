@@ -43,7 +43,7 @@ export function Button({
     ghost:
       `bg-transparent hover:bg-primary/5 hover:scale-105 hover:shadow ${isDark ? "hover:text-white hover:bg-white/5 text-secondary-dark" : "text-primary"} active:bg-primary/10 active:scale-95`,
     outline:
-      `border-2 bg-transparent color-primary hover:bg-secondary/10 hover:scale-105 hover:shadow ${isDark ? "hover:text-white hover:bg-white/5 text-secondary-dark border-secondary text-secondary" : "text-primary"} active:bg-primary/10 active:scale-95`,
+      `border-2 bg-transparent color-primary hover:bg-secondary/10 hover:scale-105 hover:shadow ${isDark ? "hover:text-white hover:bg-white/5 border-secondary text-secondary" : "text-primary"} active:bg-primary/10 active:scale-95`,
   };
 
   return (

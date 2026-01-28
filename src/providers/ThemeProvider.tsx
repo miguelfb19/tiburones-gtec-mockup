@@ -45,6 +45,7 @@ export function ThemeProvider({ children }: Readonly<ThemeProviderProps>) {
         setMode((prevMode) => {
           const newMode = prevMode === 'light' ? 'dark' : 'light';
           localStorage.setItem('theme', newMode);
+          document.cookie = `theme=${newMode}; path=/; max-age=31536000`; // Sync to cookie
           return newMode;
         });
       },

@@ -29,6 +29,9 @@ export const AccessibilityButtons = ({ isDark }: Props) => {
   };
 
   const changeLanguage = (newLocale: string) => {
+    // Save preference to cookie
+    document.cookie = `locale=${newLocale}; path=/; max-age=31536000`;
+    
     // pathname actual: /es/about-us o /en/contact
     const segments = pathname.split('/');
     // segments = ['', 'es', 'about-us'] o ['', 'en', 'contact']
