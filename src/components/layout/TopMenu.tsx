@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { menuItems } from "@/contants/menu-items";
 import { AccessibilityButtons } from "../ui/AccessibilityButtons";
 
-export function Header() {
+export function TopMenu() {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
