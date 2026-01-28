@@ -1,6 +1,6 @@
 import { ContactMain } from '@/components/sections/contact/ContactMain';
 import { Metadata } from 'next';
-import { hasLocale } from '@/lib/dictionaries';
+import { getDictionary, hasLocale, type Locale } from '@/lib/dictionaries';
 import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
@@ -20,9 +20,11 @@ export default async function ContactPage({ params }: PageProps) {
     notFound();
   }
 
+  const dict = await getDictionary(lang as Locale);
+
   return (
     <main>
-      <ContactMain />
+      <ContactMain dict={dict} />
     </main>
   );
 }

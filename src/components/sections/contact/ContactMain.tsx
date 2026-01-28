@@ -5,8 +5,13 @@ import { GradientTitle } from "@/components/ui/GradientTitle";
 import { FadeIn } from "../../animations/FadeIn";
 import { ContactItems } from "./ContactItems";
 import { Form } from "./Form";
+import { getDictionary } from "@/lib/dictionaries";
 
-export function ContactMain() {
+interface Props {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export function ContactMain({ dict }: Props) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
@@ -19,14 +24,13 @@ export function ContactMain() {
         <FadeIn delay={0.1}>
           <div className="text-center mb-16 flex flex-col items-center gap-5">
             <GradientTitle variant="h1" component="h1">
-              Hablemos de tu proyecto
+              {dict.contactPage.title}
             </GradientTitle>
             <Typography
               variant="h6"
               className={`max-w-2xl mx-auto ${isDark ? "text-gray-300" : "text-gray-600"}`}
             >
-              Estamos aquí para ayudarte a transformar tu negocio con las
-              mejores soluciones de Google Cloud
+              {dict.contactPage.subtitle}
             </Typography>
           </div>
         </FadeIn>
@@ -40,19 +44,18 @@ export function ContactMain() {
                   variant="h4"
                   className={`font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"}`}
                 >
-                  Información de Contacto
+                  {dict.contactPage.infoTitle}
                 </Typography>
                 <Typography
                   variant="body1"
                   className={`mb-8 ${isDark ? "text-gray-300" : "text-gray-600"}`}
                 >
-                  Nuestro equipo de expertos está listo para asesorarte en la
-                  mejor solución para tu empresa.
+                  {dict.contactPage.infoDescription}
                 </Typography>
               </div>
 
               {/* Contact Items */}
-              <ContactItems />
+              <ContactItems dict={dict} />
 
               {/* Horarios */}
               <div
@@ -62,22 +65,22 @@ export function ContactMain() {
                   variant="h6"
                   className={`font-semibold mb-3 ${isDark ? "text-white" : "text-gray-900"}`}
                 >
-                  Horario de Atención
+                  {dict.contactPage.scheduleTitle}
                 </Typography>
                 <Typography
                   variant="body2"
                   className={isDark ? "text-gray-300" : "text-gray-600"}
                 >
-                  Lunes a Viernes: 9:00 AM - 6:00 PM
+                  {dict.contactPage.scheduleWeekdays}
                   <br />
-                  Sábado y Domingo: Cerrado
+                  {dict.contactPage.scheduleWeekends}
                 </Typography>
               </div>
             </div>
           </FadeIn>
 
           {/* Formulario */}
-          <Form />
+          <Form dict={dict}/>
         </div>
       </div>
     </div>

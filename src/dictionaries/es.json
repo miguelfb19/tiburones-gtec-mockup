@@ -69,20 +69,35 @@
     "vision": "Visión",
     "values": "Valores"
   },
-  "contact": {
-    "title": "Contáctanos",
-    "subtitle": "Estamos aquí para ayudarte",
-    "name": "Nombre",
-    "email": "Correo electrónico",
-    "message": "Mensaje",
-    "send": "Enviar mensaje",
-    "phone": "Teléfono",
-    "address": "Dirección"
-  },
   "footer": {
     "about": "Partner oficial de Google con más de 5 años de reconocimiento como Great Place to Work.",
     "solutions": "Soluciones",
     "contact": "Contacto",
     "rights": "Todos los derechos reservados"
+  },
+  "contactPage": {
+    "title": "Hablemos de tu proyecto",
+    "subtitle": "Estamos aquí para ayudarte a transformar tu negocio con las mejores soluciones de Google Cloud",
+    "infoTitle": "Información de Contacto",
+    "infoDescription": "Nuestro equipo de expertos está listo para asesorarte en la mejor solución para tu empresa.",
+    "scheduleTitle": "Horario de Atención",
+    "scheduleWeekdays": "Lunes a Viernes: 9:00 AM - 6:00 PM",
+    "scheduleWeekends": "Sábado y Domingo: Cerrado",
+    "form": {
+      "successMessage": "¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.",
+      "nameLabel": "Nombre completo",
+      "emailLabel": "Email",
+      "companyLabel": "Empresa",
+      "phoneLabel": "Teléfono",
+      "messageLabel": "Mensaje",
+      "sendingButton": "Enviando...",
+      "sendButton": "Enviar Mensaje"
+    },
+    "contacts": {
+      "emailLabel": "Email",
+      "phoneLabel": "Teléfono",
+      "locationLabel": "Ubicación",
+      "addressValue": "Ciudad de México, México"
+    }
   }
 }

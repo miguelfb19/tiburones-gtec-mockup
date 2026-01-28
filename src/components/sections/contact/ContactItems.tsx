@@ -4,8 +4,13 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { getDictionary } from "@/lib/dictionaries";
 
-export const ContactItems = () => {
+interface Props {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export const ContactItems = ({ dict }: Props) => {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
@@ -26,7 +31,7 @@ export const ContactItems = () => {
             variant="h6"
             className={`font-semibold mb-1 ${isDark ? "text-white" : "text-gray-900"}`}
           >
-            Email
+            {dict.contactPage.contacts.emailLabel}
           </Typography>
           <Typography
             variant="body2"
@@ -52,7 +57,7 @@ export const ContactItems = () => {
             variant="h6"
             className={`font-semibold mb-1 ${isDark ? "text-white" : "text-gray-900"}`}
           >
-            Teléfono
+            {dict.contactPage.contacts.phoneLabel}
           </Typography>
           <Typography
             variant="body2"
@@ -78,13 +83,13 @@ export const ContactItems = () => {
             variant="h6"
             className={`font-semibold mb-1 ${isDark ? "text-white" : "text-gray-900"}`}
           >
-            Ubicación
+            {dict.contactPage.contacts.locationLabel}
           </Typography>
           <Typography
             variant="body2"
             className={isDark ? "text-gray-300" : "text-gray-600"}
           >
-            Ciudad de México, México
+            {dict.contactPage.contacts.addressValue}
           </Typography>
         </div>
       </motion.div>

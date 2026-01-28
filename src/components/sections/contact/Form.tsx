@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import SendIcon from "@mui/icons-material/Send";
 import { useState } from "react";
 
+import { getDictionary } from "@/lib/dictionaries";
+
 interface FormData {
   name: string;
   email: string;
@@ -13,7 +15,11 @@ interface FormData {
   message: string;
 }
 
-export const Form = () => {
+interface Props {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export const Form = ({ dict }: Props) => {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const [submitted, setSubmitted] = useState(false);
@@ -65,14 +71,14 @@ export const Form = () => {
       >
         {submitted && (
           <Alert severity="success" className="mb-6">
-            ¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.
+            {dict.contactPage.form.successMessage}
           </Alert>
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <TextField
             fullWidth
-            label="Nombre completo"
+            label={dict.contactPage.form.nameLabel}
             name="name"
             value={formData.name}
             onChange={handleChange}
@@ -106,7 +112,7 @@ export const Form = () => {
 
           <TextField
             fullWidth
-            label="Email"
+            label={dict.contactPage.form.emailLabel}
             name="email"
             type="email"
             value={formData.email}
@@ -141,7 +147,7 @@ export const Form = () => {
 
           <TextField
             fullWidth
-            label="Empresa"
+            label={dict.contactPage.form.companyLabel}
             name="company"
             value={formData.company}
             onChange={handleChange}
@@ -174,7 +180,7 @@ export const Form = () => {
 
           <TextField
             fullWidth
-            label="Teléfono"
+            label={dict.contactPage.form.phoneLabel}
             name="phone"
             value={formData.phone}
             onChange={handleChange}
@@ -207,7 +213,7 @@ export const Form = () => {
 
           <TextField
             fullWidth
-            label="Mensaje"
+            label={dict.contactPage.form.messageLabel}
             name="message"
             value={formData.message}
             onChange={handleChange}
@@ -249,7 +255,7 @@ export const Form = () => {
             disabled={loading}
             endIcon={<SendIcon />}
           >
-            {loading ? "Enviando..." : "Enviar Mensaje"}
+            {loading ? dict.contactPage.form.sendingButton : dict.contactPage.form.sendButton}
           </Button>
         </form>
       </motion.div>
