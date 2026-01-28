@@ -7,8 +7,13 @@ import { FadeIn } from "@/components/animations/FadeIn";
 import { services } from "@/contants/solutions";
 import { Stars } from '../animations/Stars';
 import FloatingClouds from "../animations/FloatingClouds";
+import { getDictionary } from "@/lib/dictionaries";
 
-export function Services() {
+interface ServicesProps {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export function Services({ dict }: ServicesProps) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
@@ -27,10 +32,10 @@ export function Services() {
               color: "secondary.main",
             }}
           >
-            Nuestras Soluciones
+            {dict.services.title}
           </Typography>
           <GradientTitle as="h2" className="mb-6 text-center">
-            Servicios especializados para tu empresa
+            {dict.services.subtitle}
           </GradientTitle>
           <Typography
             variant="h6"
@@ -39,14 +44,18 @@ export function Services() {
               color: "text.secondary",
             }}
           >
-            Como Partner oficial de Google, ofrecemos soluciones integrales que
-            impulsan la transformación digital de tu organización
+            {dict.services.description}
           </Typography>
         </FadeIn>
 
         <div className="grid grid-cols-1 gap-6">
           {services.map((service, index) => (
-            <ServiceCard key={service.title} {...service} invert={index % 2 === 0} />
+            <ServiceCard 
+              key={service.titleKey} 
+              {...service} 
+              dict={dict}
+              invert={index % 2 === 0} 
+            />
           ))}
         </div>
       </div>

@@ -1,42 +1,41 @@
-export const services = [
+type ServiceKey = "modernization" | "workspace" | "ai" | "analytics" | "managed";
+
+interface Service {
+  titleKey: ServiceKey;
+  img: string;
+  link: string;
+  color: "primary" | "secondary" | "tertiary";
+}
+
+export const services: Service[] = [
   {
-    title: "Modernización Digital",
-    description:
-      "Transformamos tu infraestructura tecnológica con las mejores prácticas de la nube, garantizando escalabilidad, seguridad y eficiencia operativa.",
+    titleKey: "modernization",
     img: "/images/solutions/modernizacion.png",
     link: "/modernization",
-    color: "primary" as const,
+    color: "primary",
   },
   {
-    title: "Google Workspace",
-    description:
-      "Potencia la colaboración de tu equipo con las herramientas de productividad más avanzadas del mercado, integradas y seguras.",
+    titleKey: "workspace",
     img: "/images/solutions/workspace.png",
     link: "/google-workspace",
-    color: "secondary" as const,
+    color: "secondary",
   },
   {
-    title: "IA Generativa",
-    description:
-      "Aprovecha el poder de la Inteligencia Artificial de Google para automatizar procesos, generar insights y transformar tu negocio.",
+    titleKey: "ai",
     img: "/images/solutions/IA.png",
     link: "/ia-generativa",
-    color: "tertiary" as const,
+    color: "tertiary",
   },
   {
-    title: "Analítica de Datos",
-    description:
-      "Convierte tus datos en decisiones estratégicas con las herramientas de análisis y visualización más potentes de Google Cloud.",
+    titleKey: "analytics",
     img: "/images/solutions/analitica.png",
     link: "/analitica-datos",
-    color: "primary" as const,
+    color: "primary",
   },
   {
-    title: "Servicios Administrados",
-    description:
-      "Deja la gestión de tu infraestructura en manos expertas. Nos encargamos de todo para que te enfoques en hacer crecer tu negocio.",
+    titleKey: "managed",
     img: "/images/solutions/administrados.png",
     link: "/servicios-administrados",
-    color: "secondary" as const,
+    color: "secondary",
   },
 ];

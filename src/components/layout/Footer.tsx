@@ -7,8 +7,13 @@ import EmailIcon from '@mui/icons-material/Email';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import Image from 'next/image';
+import { getDictionary } from '@/lib/dictionaries';
 
-export function Footer() {
+interface FooterProps {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export function Footer({ dict }: FooterProps) {
   const currentYear = new Date().getFullYear();
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -32,39 +37,39 @@ export function Footer() {
               style={{ filter: isDark ? 'brightness(0) invert(1)' : 'none' }}
             />
             <Typography variant="body2" color="text.secondary" className="mb-4">
-              Partner oficial de Google con más de 5 años de reconocimiento como Great Place to Work.
+              {dict.footer.about}
             </Typography>
           </div>
 
           {/* Soluciones */}
           <div>
             <Typography variant="h6" className='mb-4! font-semibold' color='text.primary'>
-              Soluciones
+              {dict.footer.solutions}
             </Typography>
             <ul className="space-y-2">
               <li>
                 <Typography variant="body2" color="text.secondary">
-                  Modernización Digital
+                  {dict.services.modernization.title}
                 </Typography>
               </li>
               <li>
                 <Typography variant="body2" color="text.secondary">
-                  Google Workspace
+                  {dict.services.workspace.title}
                 </Typography>
               </li>
               <li>
                 <Typography variant="body2" color="text.secondary">
-                  IA Generativa
+                  {dict.services.ai.title}
                 </Typography>
               </li>
               <li>
                 <Typography variant="body2" color="text.secondary">
-                  Analítica de Datos
+                  {dict.services.analytics.title}
                 </Typography>
               </li>
               <li>
                 <Typography variant="body2" color="text.secondary">
-                  Servicios Administrados
+                  {dict.services.managed.title}
                 </Typography>
               </li>
             </ul>
@@ -73,7 +78,7 @@ export function Footer() {
           {/* Contacto */}
           <div>
             <Typography variant="h6" className='mb-4! font-semibold' color='text.primary'>
-              Contacto
+              {dict.footer.contact}
             </Typography>
             <div className="flex gap-2 mb-4">
               <IconButton 
@@ -133,7 +138,7 @@ export function Footer() {
           isDark ? 'border-[rgba(255,255,255,0.12)]' : 'border-gray-200'
         }`}>
           <Typography variant="body2" color="text.secondary" textAlign="center">
-            © {currentYear} GTEC. Todos los derechos reservados.
+            © {currentYear} GTEC. {dict.footer.rights}
           </Typography>
         </div>
       </div>

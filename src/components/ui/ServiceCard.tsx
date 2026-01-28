@@ -7,27 +7,32 @@ import { useState } from "react";
 import { Button } from "./Button";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { getDictionary } from "@/lib/dictionaries";
 
 interface ServiceCardProps {
-  title: string;
-  description: string;
+  titleKey: "modernization" | "workspace" | "ai" | "analytics" | "managed";
   img: string;
   color: "primary" | "secondary" | "tertiary";
   link: string;
   invert?: boolean;
+  dict: Awaited<ReturnType<typeof getDictionary>>;
 }
 
 export function ServiceCard({
-  title,
-  description,
+  titleKey,
   img,
   color,
   link,
   invert = false,
+  dict,
 }: Readonly<ServiceCardProps>) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const [isHovered, setIsHovered] = useState(false);
+
+  const service = dict.services[titleKey];
+  const title = service.title;
+  const description = service.description;
 
   const colorMap = {
     primary: {

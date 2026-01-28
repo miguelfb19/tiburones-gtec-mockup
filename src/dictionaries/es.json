@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "aboutUs": "Nosotros",
+    "services": "Servicios",
+    "blog": "Blog",
+    "careers": "Trabaja con nosotros",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Transformamos tu negocio con tecnología Google",
+    "subtitle": "Soluciones empresariales de vanguardia para impulsar tu transformación digital",
+    "cta": "Conoce nuestras soluciones",
+    "ctaContact": "Contacto"
+  },
+  "services": {
+    "title": "Nuestras Soluciones",
+    "subtitle": "Servicios especializados para tu empresa",
+    "description": "Como Partner oficial de Google, ofrecemos soluciones integrales que impulsan la transformación digital de tu organización",
+    "modernization": {
+      "title": "Modernización Digital",
+      "description": "Transformamos tu infraestructura tecnológica con las mejores prácticas de la nube, garantizando escalabilidad, seguridad y eficiencia operativa."
+    },
+    "workspace": {
+      "title": "Google Workspace",
+      "description": "Potencia la colaboración de tu equipo con las herramientas de productividad más avanzadas del mercado, integradas y seguras."
+    },
+    "ai": {
+      "title": "IA Generativa",
+      "description": "Aprovecha el poder de la Inteligencia Artificial de Google para automatizar procesos, generar insights y transformar tu negocio."
+    },
+    "analytics": {
+      "title": "Analítica de Datos",
+      "description": "Convierte tus datos en decisiones estratégicas con las herramientas de análisis y visualización más potentes de Google Cloud."
+    },
+    "managed": {
+      "title": "Servicios Administrados",
+      "description": "Gestión completa de tu infraestructura tecnológica con soporte 24/7 y monitoreo proactivo."
+    }
+  },
+  "customers": {
+    "title": "Nuestros Clientes",
+    "subtitle": "Confían en nosotros",
+    "description": "Empresas líderes que han transformado su negocio con nuestras soluciones"
+  },
+  "cta": {
+    "title": "¿Listo para transformar tu empresa?",
+    "subtitle": "Únete a las empresas que ya confían en nosotros como su partner tecnológico de Google",
+    "button": "Solicitar una demo"
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "subtitle": "Conoce nuestra historia y equipo",
+    "mission": "Misión",
+    "vision": "Visión",
+    "values": "Valores"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "Estamos aquí para ayudarte",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "send": "Enviar mensaje",
+    "phone": "Teléfono",
+    "address": "Dirección"
+  },
+  "footer": {
+    "about": "Partner oficial de Google con más de 5 años de reconocimiento como Great Place to Work.",
+    "solutions": "Soluciones",
+    "contact": "Contacto",
+    "rights": "Todos los derechos reservados"
+  }
+}

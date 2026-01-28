@@ -7,6 +7,7 @@ import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import LanguageIcon from "@mui/icons-material/Language";
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import { useColorMode } from "@/providers/ThemeProvider";
+import { usePathname, useRouter } from "next/navigation";
 
 interface Props {
   isDark?: boolean;
@@ -16,6 +17,8 @@ export const AccessibilityButtons = ({ isDark }: Props) => {
   const { toggleColorMode } = useColorMode();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const openLanguage = Boolean(anchorEl);
+  const pathname = usePathname();
+  const router = useRouter();
 
   const handleLanguageClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -23,6 +26,23 @@ export const AccessibilityButtons = ({ isDark }: Props) => {
 
   const handleLanguageClose = () => {
     setAnchorEl(null);
+  };
+
+  const changeLanguage = (newLocale: string) => {
+    // pathname actual: /es/about-us o /en/contact
+    const segments = pathname.split('/');
+    // segments = ['', 'es', 'about-us'] o ['', 'en', 'contact']
+    
+    if (segments.length > 1) {
+      segments[1] = newLocale; // Reemplazar el locale
+      const newPath = segments.join('/');
+      router.push(newPath);
+    } else {
+      // En caso de estar en la raíz
+      router.push(`/${newLocale}`);
+    }
+    
+    handleLanguageClose();
   };
 
   return (
@@ -47,6 +67,7 @@ export const AccessibilityButtons = ({ isDark }: Props) => {
         }}
       >
         <MenuItem
+          onClick={() => changeLanguage('es')}
           className={`gap-3 px-4 py-2 cursor-pointer ${isDark ? "hover:bg-stone-700" : "hover:bg-gray-100"}`}
         >
           <span className="text-2xl">🇪🇸</span>
@@ -55,6 +76,7 @@ export const AccessibilityButtons = ({ isDark }: Props) => {
           </span>
         </MenuItem>
         <MenuItem
+          onClick={() => changeLanguage('en')}
           className={`gap-3 px-4 py-2 cursor-pointer ${isDark ? "hover:bg-stone-700" : "hover:bg-gray-100"}`}
         >
           <span className="text-2xl">🇺🇸</span>

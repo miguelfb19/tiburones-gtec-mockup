@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "services": "Services",
+    "blog": "Blog",
+    "careers": "Work with us",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "We transform your business with Google technology",
+    "subtitle": "Cutting-edge enterprise solutions to drive your digital transformation",
+    "cta": "Discover our solutions",
+    "ctaContact": "Contact"
+  },
+  "services": {
+    "title": "Our Solutions",
+    "subtitle": "Specialized services for your company",
+    "description": "As an official Google Partner, we offer comprehensive solutions that drive your organization's digital transformation",
+    "modernization": {
+      "title": "Digital Modernization",
+      "description": "We transform your technology infrastructure with cloud best practices, ensuring scalability, security, and operational efficiency."
+    },
+    "workspace": {
+      "title": "Google Workspace",
+      "description": "Empower your team's collaboration with the most advanced productivity tools on the market, integrated and secure."
+    },
+    "ai": {
+      "title": "Generative AI",
+      "description": "Leverage the power of Google's Artificial Intelligence to automate processes, generate insights, and transform your business."
+    },
+    "analytics": {
+      "title": "Data Analytics",
+      "description": "Turn your data into strategic decisions with the most powerful analytics and visualization tools from Google Cloud."
+    },
+    "managed": {
+      "title": "Managed Services",
+      "description": "Complete management of your technology infrastructure with 24/7 support and proactive monitoring."
+    }
+  },
+  "customers": {
+    "title": "Our Clients",
+    "subtitle": "They trust us",
+    "description": "Leading companies that have transformed their business with our solutions"
+  },
+  "cta": {
+    "title": "Ready to transform your company?",
+    "subtitle": "Join the companies that already trust us as their Google technology partner",
+    "button": "Request a demo"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Learn about our story and team",
+    "mission": "Mission",
+    "vision": "Vision",
+    "values": "Values"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "phone": "Phone",
+    "address": "Address"
+  },
+  "footer": {
+    "about": "Official Google Partner with over 5 years of recognition as Great Place to Work.",
+    "solutions": "Solutions",
+    "contact": "Contact",
+    "rights": "All rights reserved"
+  }
+}

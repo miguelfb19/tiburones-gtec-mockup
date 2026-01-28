@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/providers/ThemeProvider";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { TopMenu } from "@/components/layout/TopMenu";
+import { locales, type Locale, getDictionary } from "@/lib/dictionaries";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,22 +31,31 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({
+export async function generateStaticParams() {
+  return locales.map((locale) => ({ lang: locale }));
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: Locale }>;
 }>) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <TopMenu />
+          <TopMenu lang={lang} />
           {children}
           <ScrollToTop />
-          <Footer />
+           <Footer dict={dict} />
         </ThemeProvider>
       </body>
     </html>

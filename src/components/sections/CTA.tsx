@@ -7,8 +7,13 @@ import { Button } from "@/components/ui/Button";
 import { GradientTitle } from "@/components/ui/GradientTitle";
 import { experienceData } from "@/contants/experience-data";
 import { FadeIn } from "../animations/FadeIn";
+import { getDictionary } from "@/lib/dictionaries";
 
-export function CTA() {
+interface CTAProps {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export function CTA({ dict }: CTAProps) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
@@ -33,21 +38,20 @@ export function CTA() {
               fontSize: { xs: "2rem", md: "3rem" },
             }}
           >
-            ¿Listo para transformar tu empresa?
+            {dict.cta.title}
           </GradientTitle>
           <Typography
             variant="h6"
             className="mb-12 text-gray-600 max-w-xl mx-auto font-normal text-center"
           >
-            Únete a las empresas que ya confían en nosotros como su partner
-            tecnológico de Google
+            {dict.cta.subtitle}
           </Typography>
           <div className="flex gap-6 justify-center flex-wrap mb-12">
             <Button variant="solid" size="large" endIcon={<ArrowForwardIcon />}>
-              Solicitar una demo
+              {dict.cta.button}
             </Button>
             <Button variant="outline" size="large">
-              Hablar con un experto
+              {dict.hero.ctaContact}
             </Button>
           </div>
 

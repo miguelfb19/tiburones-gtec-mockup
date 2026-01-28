@@ -8,12 +8,15 @@ import { GradientTitle } from "@/components/ui/GradientTitle";
 import { Button } from "@/components/ui/Button";
 import { Stars } from "../animations/Stars";
 import { Awards } from "./Awards";
+import { getDictionary } from "@/lib/dictionaries";
 
-export function Hero() {
+interface HeroProps {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export function Hero({ dict }: HeroProps) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
-
-  // Generar estrellas aleatorias
 
   return (
     <>
@@ -121,7 +124,7 @@ export function Hero() {
                     },
                   }}
                 >
-                  Transformamos tu negocio con tecnología Google
+                  {dict.hero.title}
                 </GradientTitle>
               </motion.div>
               <motion.div
@@ -136,8 +139,7 @@ export function Hero() {
                     color: "text.secondary",
                   }}
                 >
-                  Soluciones empresariales de vanguardia para impulsar tu
-                  transformación digital
+                  {dict.hero.subtitle}
                 </Typography>
               </motion.div>
               <motion.div
@@ -151,10 +153,10 @@ export function Hero() {
                   size="large"
                   endIcon={<ArrowForwardIcon />}
                 >
-                  Conoce nuestras soluciones
+                  {dict.hero.cta}
                 </Button>
                 <Button variant="outline" size="large">
-                  Contacto
+                  {dict.hero.ctaContact}
                 </Button>
               </motion.div>
 

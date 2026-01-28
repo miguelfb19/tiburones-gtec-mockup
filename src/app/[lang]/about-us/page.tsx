@@ -6,6 +6,8 @@ import { Team } from "@/components/sections/about-us/Team";
 import { Timeline } from "@/components/sections/about-us/Timeline";
 import { Stats } from "@/components/sections/about-us/Stats";
 import { CTA } from "@/components/sections/CTA";
+import { getDictionary, hasLocale, type Locale } from '@/lib/dictionaries';
+import { notFound } from 'next/navigation';
 
 export const metadata = {
   title: "Sobre Nosotros | GTEC",
@@ -13,7 +15,19 @@ export const metadata = {
     "Conoce más sobre GTEC, nuestra historia, misión, valores y el equipo que hace posible nuestras soluciones tecnológicas.",
 };
 
-export default function AboutUsPage() {
+interface PageProps {
+  params: Promise<{ lang: string }>;
+}
+
+export default async function AboutUsPage({ params }: PageProps) {
+  const { lang } = await params;
+
+  if (!hasLocale(lang)) {
+    notFound();
+  }
+
+  const dict = await getDictionary(lang as Locale);
+
   return (
     <main suppressHydrationWarning>
       <AboutHero />
@@ -23,7 +37,7 @@ export default function AboutUsPage() {
       <Values />
       <Timeline />
       <Team />
-      <CTA />
+      <CTA dict={dict} />
     </main>
   );
 }

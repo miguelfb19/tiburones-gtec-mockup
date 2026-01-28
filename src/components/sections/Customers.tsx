@@ -6,8 +6,13 @@ import { Typography, useTheme } from "@mui/material";
 import { GradientTitle } from "@/components/ui/GradientTitle";
 import { customers } from "@/contants/customers";
 import { FadeIn } from "../animations/FadeIn";
+import { getDictionary } from "@/lib/dictionaries";
 
-export const Customers = () => {
+interface CustomersProps {
+  dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export const Customers = ({ dict }: CustomersProps) => {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const isMobile = theme.breakpoints.down("sm");
@@ -28,18 +33,17 @@ export const Customers = () => {
             className="font-semibold text-base tracking-widest mb-4 block"
             sx={{ color: "secondary.main" }}
           >
-            Nuestros Clientes
+            {dict.customers.title}
           </Typography>
           <GradientTitle as="h2" className="mb-6 text-center">
-            Confían en nosotros
+            {dict.customers.subtitle}
           </GradientTitle>
           <Typography
             variant="h6"
             className="max-w-2xl mx-auto font-normal"
             sx={{ color: "text.secondary" }}
           >
-            Empresas líderes que han transformado su negocio con nuestras
-            soluciones
+            {dict.customers.description}
           </Typography>
         </div>
 
