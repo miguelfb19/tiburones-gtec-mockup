@@ -46,7 +46,7 @@ export const AccessibilityButtons = ({ isDark }: Props) => {
   };
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex flex-col md:flex-row gap-2 items-center">
       <IconButton
         className={`ml-4 rounded-full p-2 text-white! transition-colors ${isDark ? "bg-white/10 hover:bg-white/20" : "bg-secondary-light! hover:bg-[#1ba5d9]"}`}
         onClick={handleLanguageClick}
