@@ -7,55 +7,47 @@ import { FadeIn } from "@/components/animations/FadeIn";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import EmailIcon from "@mui/icons-material/Email";
+import { getDictionary } from "@/lib/dictionaries";
 
-export function Team() {
+interface Props {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export function Team({ dict }: Props) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
-  const teamMembers = [
+  const memberStyles = [
     {
-      name: "Erick González",
-      role: "CEO & Fundador",
-      bio: "15+ años liderando transformaciones digitales en Fortune 500",
       avatar: "EG",
       gradient: "from-secondary to-primary",
     },
     {
-      name: "Bernardo Pallares",
-      role: "Director de operaciones",
-      bio: "Experto en arquitecturas cloud y soluciones escalables",
       avatar: "BP",
       gradient: "from-tertiary to-secondary",
     },
     {
-      name: "Norma Pérez",
-      role: "Head of Growth",
-      bio: "Especialista en IA y Machine Learning con 12+ años de experiencia",
       avatar: "NP",
       gradient: "from-primary to-tertiary",
     },
     {
-      name: "Eduardo Pantoja",
-      role: "Jefe tecnología",
-      bio: "10+ años optimizando procesos y mejorando eficiencia operacional",
       avatar: "EP",
       gradient: "from-secondary to-tertiary",
     },
     {
-      name: "Angélica Montalvo",
-      role: "Directora Comercial",
-      bio: "Apasionada por crear experiencias excepcionales para nuestros clientes",
       avatar: "AM",
       gradient: "from-primary to-secondary",
     },
     {
-      name: "Nohemi Shanain Ista",
-      role: "Director de recursos humanos",
-      bio: "Experto en ciberseguridad y cumplimiento normativo internacional",
       avatar: "NI",
       gradient: "from-tertiary to-primary",
     },
   ];
+
+  const teamMembers = dict.aboutUsPage.team.members.map((member, index) => ({
+    ...member,
+    ...memberStyles[index],
+  }));
 
   return (
     <div className={`py-20`}>
@@ -66,13 +58,13 @@ export function Team() {
               variant="overline"
               className="text-secondary font-semibold tracking-wider mb-4 block"
             >
-              CONOCE AL EQUIPO
+              {dict.aboutUsPage.team.label}
             </Typography>
             <GradientTitle
               as="h2"
               sx={{ fontSize: { xs: "2rem", md: "2.75rem" }, mb: 3 }}
             >
-              Liderazgo que inspira
+              {dict.aboutUsPage.team.title}
             </GradientTitle>
             <Typography
               variant="h6"
@@ -82,8 +74,7 @@ export function Team() {
                 mx: "auto",
               }}
             >
-              Nuestro equipo directivo combina décadas de experiencia con una
-              visión innovadora del futuro
+              {dict.aboutUsPage.team.subtitle}
             </Typography>
           </div>
 

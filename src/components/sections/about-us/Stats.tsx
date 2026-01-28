@@ -3,37 +3,42 @@
 import { Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import { FadeIn } from "@/components/animations/FadeIn";
+import { getDictionary } from "@/lib/dictionaries";
 
-const stats = [
-  {
-    value: 15,
-    suffix: "+",
-    label: "Años de Experiencia",
-    color: "secondary",
-  },
-  {
-    value: 500,
-    suffix: "+",
-    label: "Proyectos Completados",
-    color: "tertiary",
-  },
-  {
-    value: 200,
-    suffix: "+",
-    label: "Clientes Satisfechos",
-    color: "secondary",
-  },
-  {
-    value: 50,
-    suffix: "+",
-    label: "Profesionales Expertos",
-    color: "primary",
-  },
-];
+interface Props {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
 
-export function Stats() {
+export function Stats({ dict }: Props) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
+
+  const stats = [
+    {
+      value: dict.aboutUsPage.stats.experience.value,
+      suffix: "+",
+      label: dict.aboutUsPage.stats.experience.label,
+      color: "secondary",
+    },
+    {
+      value: dict.aboutUsPage.stats.projects.value,
+      suffix: "+",
+      label: dict.aboutUsPage.stats.projects.label,
+      color: "tertiary",
+    },
+    {
+      value: dict.aboutUsPage.stats.clients.value,
+      suffix: "+",
+      label: dict.aboutUsPage.stats.clients.label,
+      color: "secondary",
+    },
+    {
+      value: dict.aboutUsPage.stats.experts.value,
+      suffix: "+",
+      label: dict.aboutUsPage.stats.experts.label,
+      color: "primary",
+    },
+  ];
 
   const getColorClass = (color: string) => {
     const colorMap: Record<string, { light: string; dark: string }> = {

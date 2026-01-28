@@ -99,5 +99,78 @@
       "locationLabel": "Location",
       "addressValue": "Mexico City, Mexico"
     }
+  },
+  "aboutUsPage": {
+    "hero": {
+      "label": "ABOUT US",
+      "title": "Innovation that transforms the future",
+      "description": "We are leaders in enterprise technology solutions, committed to excellence and continuous innovation to drive our clients' growth.",
+      "imageAlt": "[Video or Featured Image here]"
+    },
+    "stats": {
+      "experience": { "label": "Years of Experience", "value": "15" },
+      "projects": { "label": "Completed Projects", "value": "500" },
+      "clients": { "label": "Satisfied Clients", "value": "200" },
+      "experts": { "label": "Expert Professionals", "value": "50" }
+    },
+    "ourStory": {
+      "label": "OUR STORY",
+      "title": "A journey of innovation and growth",
+      "p1": "Since our inception in 2008, GTEC has been a pioneer in transforming how companies adopt technology. We started as a small team of visionaries passionate about innovation.",
+      "p2": "Today, we are recognized as leaders in the sector, serving companies of all sizes with solutions that drive growth and efficiency. Our commitment to excellence has led us to win multiple international awards.",
+      "p3": "But what truly defines us is not the awards, but our clients' success stories and the positive impact we generate in their organizations every day.",
+      "imageAlt": "[Image: Offices / Team]"
+    },
+    "mission": {
+      "label": "OUR PURPOSE",
+      "title": "Mission and Vision",
+      "mission": {
+        "title": "Our Mission",
+        "description": "Empower companies with innovative technology solutions that drive their digital transformation, optimize their processes, and generate sustainable value. We are committed to being the strategic partner our clients need to achieve their most ambitious goals."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "To be recognized as the global leader in technology consulting, setting new standards of excellence, innovation, and customer service. We aspire to create a future where technology is accessible, efficient, and transformative for all organizations."
+      }
+    },
+    "values": {
+      "label": "WHAT DEFINES US",
+      "title": "Our Values",
+      "subtitle": "The fundamental principles that guide our work and decisions every day",
+      "items": {
+        "excellence": { "title": "Excellence", "description": "We strive to exceed expectations in every project, delivering solutions of the highest quality." },
+        "innovation": { "title": "Innovation", "description": "We adopt the latest technologies and methodologies to stay at the forefront of the industry." },
+        "integrity": { "title": "Integrity", "description": "We act with transparency, honesty, and ethics in all our business relationships." },
+        "collaboration": { "title": "Collaboration", "description": "We work as a team, both internally and with our clients, to achieve shared goals." },
+        "improvement": { "title": "Continuous Improvement", "description": "We are committed to learning and constant evolution of our capabilities." },
+        "passion": { "title": "Passion", "description": "We love what we do and that passion is reflected in the quality of our work and service." }
+      }
+    },
+    "timeline": {
+      "label": "OUR JOURNEY",
+      "title": "Important Milestones",
+      "items": [
+        { "year": "2008", "title": "GTEC Foundation", "description": "We started operations with a team of 5 people passionate about technology and innovation." },
+        { "year": "2011", "title": "Regional Expansion", "description": "We opened our first international office and reached 50 active clients." },
+        { "year": "2014", "title": "International Recognition", "description": "We received our first 'Best Technology Partner' award for our excellence in service." },
+        { "year": "2017", "title": "Digital Transformation", "description": "We launched our consulting division in digital transformation and cloud computing." },
+        { "year": "2020", "title": "Great Place to Work Certification", "description": "Recognized as one of the best places to work in technology." },
+        { "year": "2023", "title": "Market Leader", "description": "We reached 200+ clients and a team of over 50 certified professionals." },
+        { "year": "2024", "title": "AI Innovation", "description": "Launch of our specialized practice in Artificial Intelligence and Machine Learning." }
+      ]
+    },
+    "team": {
+      "label": "MEET THE TEAM",
+      "title": "Leadership that inspires",
+      "subtitle": "Our management team combines decades of experience with an innovative vision of the future",
+      "members": [
+        { "name": "Erick González", "role": "CEO & Founder", "bio": "15+ years leading digital transformations in Fortune 500" },
+        { "name": "Bernardo Pallares", "role": "COO", "bio": "Expert in cloud architectures and scalable solutions" },
+        { "name": "Norma Pérez", "role": "Head of Growth", "bio": "Specialist in AI and Machine Learning with 12+ years of experience" },
+        { "name": "Eduardo Pantoja", "role": "CTO", "bio": "10+ years optimizing processes and improving operational efficiency" },
+        { "name": "Angélica Montalvo", "role": "CCO", "bio": "Passionate about creating exceptional experiences for our clients" },
+        { "name": "Nohemi Shanain Ista", "role": "Human Resources Director", "bio": "Expert in cybersecurity and international compliance" }
+      ]
+    }
   }
 }

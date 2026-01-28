@@ -4,8 +4,13 @@ import { Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import { GradientTitle } from "@/components/ui/GradientTitle";
 import { FadeIn } from "@/components/animations/FadeIn";
+import { getDictionary } from "@/lib/dictionaries";
 
-export function OurStory() {
+interface Props {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export function OurStory({ dict }: Props) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
@@ -24,13 +29,13 @@ export function OurStory() {
                 variant="overline"
                 className="text-secondary font-semibold tracking-wider mb-4 block"
               >
-                NUESTRA HISTORIA
+                {dict.aboutUsPage.ourStory.label}
               </Typography>
               <GradientTitle
                 as="h2"
                 sx={{ fontSize: { xs: "2rem", md: "2.75rem" }, mb: 3 }}
               >
-                Un viaje de innovación y crecimiento
+                {dict.aboutUsPage.ourStory.title}
               </GradientTitle>
               <Typography
                 variant="body1"
@@ -40,10 +45,7 @@ export function OurStory() {
                   mb: 3,
                 }}
               >
-                Desde nuestros inicios en 2008, GTEC ha sido pionera en
-                transformar la manera en que las empresas adoptan la tecnología.
-                Comenzamos como un pequeño equipo de visionarios apasionados por
-                la innovación.
+                {dict.aboutUsPage.ourStory.p1}
               </Typography>
               <Typography
                 variant="body1"
@@ -53,11 +55,7 @@ export function OurStory() {
                   mb: 3,
                 }}
               >
-                Hoy, somos reconocidos como líderes en el sector, sirviendo a
-                empresas de todos los tamaños con soluciones que impulsan el
-                crecimiento y la eficiencia. Nuestro compromiso con la
-                excelencia nos ha llevado a ganar múltiples reconocimientos
-                internacionales.
+                {dict.aboutUsPage.ourStory.p2}
               </Typography>
               <Typography
                 variant="body1"
@@ -66,9 +64,7 @@ export function OurStory() {
                   lineHeight: 1.8,
                 }}
               >
-                Pero lo que realmente nos define no son los premios, sino las
-                historias de éxito de nuestros clientes y el impacto positivo
-                que generamos en sus organizaciones cada día.
+                {dict.aboutUsPage.ourStory.p3}
               </Typography>
             </motion.div>
 
@@ -92,7 +88,7 @@ export function OurStory() {
                       variant="h6"
                       className="text-white font-semibold bg-black/40 px-6 py-3 rounded-lg backdrop-blur-sm"
                     >
-                      [Imagen: Oficinas / Equipo]
+                      {dict.aboutUsPage.ourStory.imageAlt}
                     </Typography>
                   </div>
                 </div>

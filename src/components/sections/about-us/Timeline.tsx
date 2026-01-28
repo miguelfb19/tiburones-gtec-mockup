@@ -5,55 +5,17 @@ import { motion } from "framer-motion";
 import { GradientTitle } from "@/components/ui/GradientTitle";
 import { FadeIn } from "@/components/animations/FadeIn";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { getDictionary } from "@/lib/dictionaries";
 
-export function Timeline() {
+interface Props {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export function Timeline({ dict }: Props) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
-  const milestones = [
-    {
-      year: "2008",
-      title: "Fundación de GTEC",
-      description:
-        "Iniciamos operaciones con un equipo de 5 personas apasionadas por la tecnología y la innovación.",
-    },
-    {
-      year: "2011",
-      title: "Expansión Regional",
-      description:
-        "Abrimos nuestra primera oficina internacional y alcanzamos 50 clientes activos.",
-    },
-    {
-      year: "2014",
-      title: "Reconocimiento Internacional",
-      description:
-        "Recibimos nuestro primer premio 'Best Technology Partner' por nuestra excelencia en servicio.",
-    },
-    {
-      year: "2017",
-      title: "Transformación Digital",
-      description:
-        "Lanzamos nuestra división de consultoría en transformación digital y cloud computing.",
-    },
-    {
-      year: "2020",
-      title: "Certificación Great Place to Work",
-      description:
-        "Reconocidos como uno de los mejores lugares para trabajar en tecnología.",
-    },
-    {
-      year: "2023",
-      title: "Líder del Mercado",
-      description:
-        "Alcanzamos los 200+ clientes y un equipo de más de 50 profesionales certificados.",
-    },
-    {
-      year: "2024",
-      title: "Innovación en IA",
-      description:
-        "Lanzamiento de nuestra práctica especializada en Inteligencia Artificial y Machine Learning.",
-    },
-  ];
+  const milestones = dict.aboutUsPage.timeline.items;
 
   return (
     <div className={`py-20`}>
@@ -64,13 +26,13 @@ export function Timeline() {
               variant="overline"
               className="text-secondary font-semibold tracking-wider mb-4 block"
             >
-              NUESTRO CAMINO
+              {dict.aboutUsPage.timeline.label}
             </Typography>
             <GradientTitle
               as="h2"
               sx={{ fontSize: { xs: "2rem", md: "2.75rem" } }}
             >
-              Hitos Importantes
+              {dict.aboutUsPage.timeline.title}
             </GradientTitle>
           </div>
 

@@ -6,24 +6,27 @@ import { GradientTitle } from "@/components/ui/GradientTitle";
 import { FadeIn } from "@/components/animations/FadeIn";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { getDictionary } from "@/lib/dictionaries";
 
-export function Mission() {
+interface Props {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export function Mission({ dict }: Props) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
   const items = [
     {
       icon: RocketLaunchIcon,
-      title: "Nuestra Misión",
-      description:
-        "Empoderar a las empresas con soluciones tecnológicas innovadoras que impulsen su transformación digital, optimicen sus procesos y generen valor sostenible. Nos comprometemos a ser el socio estratégico que nuestros clientes necesitan para alcanzar sus objetivos más ambiciosos.",
+      title: dict.aboutUsPage.mission.mission.title,
+      description: dict.aboutUsPage.mission.mission.description,
       gradient: "from-secondary to-primary",
     },
     {
       icon: VisibilityIcon,
-      title: "Nuestra Visión",
-      description:
-        "Ser reconocidos como el líder global en consultoría tecnológica, estableciendo nuevos estándares de excelencia, innovación y servicio al cliente. Aspiramos a crear un futuro donde la tecnología sea accesible, eficiente y transformadora para todas las organizaciones.",
+      title: dict.aboutUsPage.mission.vision.title,
+      description: dict.aboutUsPage.mission.vision.description,
       gradient: "from-tertiary to-secondary",
     },
   ];
@@ -37,13 +40,13 @@ export function Mission() {
               variant="overline"
               className="text-secondary font-semibold tracking-wider mb-4 block"
             >
-              NUESTRO PROPÓSITO
+              {dict.aboutUsPage.mission.label}
             </Typography>
             <GradientTitle
               as="h2"
               sx={{ fontSize: { xs: "2rem", md: "2.75rem" } }}
             >
-              Misión y Visión
+              {dict.aboutUsPage.mission.title}
             </GradientTitle>
           </div>
 

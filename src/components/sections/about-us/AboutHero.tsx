@@ -6,8 +6,13 @@ import { GradientTitle } from "@/components/ui/GradientTitle";
 import { Stars } from "@/components/animations/Stars";
 import { FadeIn } from "@/components/animations/FadeIn";
 import FloatingClouds from "@/components/animations/FloatingClouds";
+import { getDictionary } from "@/lib/dictionaries";
 
-export function AboutHero() {
+interface Props {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export function AboutHero({ dict }: Props) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
@@ -29,13 +34,13 @@ export function AboutHero() {
                 variant="overline"
                 className="text-secondary font-semibold tracking-wider mb-4 block"
               >
-                SOBRE NOSOTROS
+                {dict.aboutUsPage.hero.label}
               </Typography>
               <GradientTitle
                 as="h1"
                 sx={{ fontSize: { xs: "2.5rem", md: "3.5rem" }, mb: 3 }}
               >
-                Innovación que transforma el futuro
+                {dict.aboutUsPage.hero.title}
               </GradientTitle>
             </motion.div>
 
@@ -52,9 +57,7 @@ export function AboutHero() {
                   mb: 4,
                 }}
               >
-                Somos líderes en soluciones tecnológicas empresariales,
-                comprometidos con la excelencia y la innovación continua para
-                impulsar el crecimiento de nuestros clientes.
+                {dict.aboutUsPage.hero.description}
               </Typography>
             </motion.div>
 
@@ -77,7 +80,7 @@ export function AboutHero() {
                     variant="h6"
                     className="text-white font-semibold bg-black/30 px-6 py-3 rounded-lg backdrop-blur-sm"
                   >
-                    [Video o Imagen destacada aquí]
+                    {dict.aboutUsPage.hero.imageAlt}
                   </Typography>
                 </div>
               </div>

@@ -10,52 +10,51 @@ import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import SecurityIcon from "@mui/icons-material/Security";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { getDictionary } from "@/lib/dictionaries";
 
-export function Values() {
+interface Props {
+  readonly dict: Awaited<ReturnType<typeof getDictionary>>;
+}
+
+export function Values({ dict }: Props) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
   const values = [
     {
       icon: StarIcon,
-      title: "Excelencia",
-      description:
-        "Nos esforzamos por superar las expectativas en cada proyecto, entregando soluciones de la más alta calidad.",
+      title: dict.aboutUsPage.values.items.excellence.title,
+      description: dict.aboutUsPage.values.items.excellence.description,
       color: "secondary",
     },
     {
       icon: LightbulbIcon,
-      title: "Innovación",
-      description:
-        "Adoptamos las últimas tecnologías y metodologías para mantenernos a la vanguardia de la industria.",
+      title: dict.aboutUsPage.values.items.innovation.title,
+      description: dict.aboutUsPage.values.items.innovation.description,
       color: "tertiary",
     },
     {
       icon: SecurityIcon,
-      title: "Integridad",
-      description:
-        "Actuamos con transparencia, honestidad y ética en todas nuestras relaciones comerciales.",
+      title: dict.aboutUsPage.values.items.integrity.title,
+      description: dict.aboutUsPage.values.items.integrity.description,
       color: "primary",
     },
     {
       icon: PeopleIcon,
-      title: "Colaboración",
-      description:
-        "Trabajamos en equipo, tanto internamente como con nuestros clientes, para lograr objetivos compartidos.",
+      title: dict.aboutUsPage.values.items.collaboration.title,
+      description: dict.aboutUsPage.values.items.collaboration.description,
       color: "secondary",
     },
     {
       icon: TrendingUpIcon,
-      title: "Mejora Continua",
-      description:
-        "Nos comprometemos con el aprendizaje y la evolución constante de nuestras capacidades.",
+      title: dict.aboutUsPage.values.items.improvement.title,
+      description: dict.aboutUsPage.values.items.improvement.description,
       color: "tertiary",
     },
     {
       icon: FavoriteIcon,
-      title: "Pasión",
-      description:
-        "Amamos lo que hacemos y esa pasión se refleja en la calidad de nuestro trabajo y servicio.",
+      title: dict.aboutUsPage.values.items.passion.title,
+      description: dict.aboutUsPage.values.items.passion.description,
       color: "primary",
     },
   ];
@@ -69,13 +68,13 @@ export function Values() {
               variant="overline"
               className="text-secondary font-semibold tracking-wider mb-4 block"
             >
-              LO QUE NOS DEFINE
+              {dict.aboutUsPage.values.label}
             </Typography>
             <GradientTitle
               as="h2"
               sx={{ fontSize: { xs: "2rem", md: "2.75rem" }, mb: 3 }}
             >
-              Nuestros Valores
+              {dict.aboutUsPage.values.title}
             </GradientTitle>
             <Typography
               variant="h6"
@@ -85,8 +84,7 @@ export function Values() {
                 mx: "auto",
               }}
             >
-              Los principios fundamentales que guían nuestro trabajo y nuestras
-              decisiones cada día
+              {dict.aboutUsPage.values.subtitle}
             </Typography>
           </div>
 

@@ -30,13 +30,13 @@ export default async function AboutUsPage({ params }: PageProps) {
 
   return (
     <main suppressHydrationWarning>
-      <AboutHero />
-      <Stats />
-      <OurStory />
-      <Mission />
-      <Values />
-      <Timeline />
-      <Team />
+      <AboutHero dict={dict} />
+      <Stats dict={dict} />
+      <OurStory dict={dict} />
+      <Mission dict={dict} />
+      <Values dict={dict} />
+      <Timeline dict={dict} />
+      <Team dict={dict} />
       <CTA dict={dict} />
     </main>
   );
