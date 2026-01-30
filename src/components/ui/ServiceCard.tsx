@@ -56,7 +56,7 @@ export function ServiceCard({
 
   return (
     <div
-      className={`flex ${invert ? "flex-row-reverse" : ""} items-center gap-10`}
+      className={`flex ${invert ? "flex-row-reverse" : ""} items-center gap-10 max-md:flex-col-reverse`}
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -64,7 +64,7 @@ export function ServiceCard({
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         whileHover={{ y: -8 }}
-        className={`w-110 shrink-0 hover:shadow-2xl shadow-secondary-light`}
+        className={`w-110 shrink-0 hover:shadow-2xl shadow-secondary-light max-md:w-full`}
       >
         <Image
           src={img}
@@ -83,7 +83,7 @@ export function ServiceCard({
           transition={{ duration: 0.3, ease: "easeOut" }}
           onHoverStart={() => setIsHovered(true)}
           onHoverEnd={() => setIsHovered(false)}
-          className="rounded-xl p-5 hover:shadow-2xl shadow-secondary-light transition-shadow relative overflow-hidden"
+          className="rounded-xl p-5 hover:shadow-2xl max-md:shadow-2xl shadow-secondary-light transition-shadow relative overflow-hidden"
         >
           {/* Contenido con blur */}
           <Link
@@ -105,7 +105,7 @@ export function ServiceCard({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isHovered ? 1 : 0 }}
                 transition={{ duration: 0.2 }}
-                className="flex items-center justify-center pointer-events-none"
+                className="flex items-center justify-center pointer-events-none max-md:opacity-100!"
               >
                 <div className="pointer-events-auto">
                   <Button variant="ghost" size="medium">
